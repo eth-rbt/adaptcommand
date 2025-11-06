@@ -1,0 +1,17 @@
+{
+  "total_personas": 200,
+  "valid_personas": 200,
+  "excluded_personas": 0,
+  "total_dialogues": 10000,
+  "train_ratio": 0.6,
+  "val_ratio": 0.2,
+  "test_ratio": 0.2,
+  "online_batch_size": 10,
+  "total_train_examples": 6000,
+  "total_val_examples": 2000,
+  "total_test_examples": 2000,
+  "total_online_examples": 2000,
+  "avg_examples_per_persona": 50.0,
+  "min_examples_per_persona": 50,
+  "max_examples_per_persona": 50
+}

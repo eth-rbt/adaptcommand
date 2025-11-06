@@ -1,0 +1,51 @@
+{
+  "no_overlap": {
+    "valid": true,
+    "errors": []
+  },
+  "minimum_coverage": {
+    "valid": true,
+    "errors": []
+  },
+  "balance": {
+    "valid": true,
+    "warnings": [],
+    "stats": {
+      "total_examples": 10000,
+      "num_personas": 200,
+      "max_user_examples": 50,
+      "max_user_proportion": 0.005,
+      "dominant_users": []
+    }
+  },
+  "temporal_order": {
+    "valid": true,
+    "errors": []
+  },
+  "statistics": {
+    "num_personas": 200,
+    "total_examples": 10000,
+    "train": {
+      "total": 6000,
+      "proportion": 0.6,
+      "avg_per_persona": 30.0,
+      "std_per_persona": 0.0
+    },
+    "val": {
+      "total": 2000,
+      "proportion": 0.2,
+      "avg_per_persona": 10.0,
+      "std_per_persona": 0.0
+    },
+    "test": {
+      "total": 2000,
+      "proportion": 0.2,
+      "avg_per_persona": 10.0,
+      "std_per_persona": 0.0
+    },
+    "online": {
+      "total": 2000,
+      "avg_per_persona": 10.0
+    }
+  }
+}
