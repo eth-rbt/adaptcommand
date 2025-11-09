@@ -17,6 +17,21 @@ import numpy as np
 from action_metrics import ActionExtractor, ActionMetrics
 
 
+def convert_to_serializable(obj):
+    """Convert numpy types to Python native types for JSON serialization."""
+    if isinstance(obj, np.floating):
+        return float(obj)
+    elif isinstance(obj, np.integer):
+        return int(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    elif isinstance(obj, dict):
+        return {key: convert_to_serializable(value) for key, value in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_to_serializable(item) for item in obj]
+    return obj
+
+
 def load_config(config_file: Path):
     """Load configuration."""
     with open(config_file, "r") as f:
@@ -297,6 +312,9 @@ def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path 
             "metrics": metrics,
             "num_examples": len(predictions)
         }
+
+        # Convert numpy types to Python types for JSON serialization
+        results = convert_to_serializable(results)
 
         results_file = output_dir / "baseline_results.json"
         with open(results_file, "w") as f:
