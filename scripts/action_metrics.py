@@ -232,6 +232,7 @@ class ActionMetrics:
         - action_f1: F1 score
         - device_accuracy: % of devices correctly identified
         - parameter_accuracy: % of parameters correctly set
+        - numerical_* metrics: Confusion matrix for numerical parameters
         """
         # Get all devices mentioned
         pred_devices = set(pred_actions.keys())
@@ -248,10 +249,30 @@ class ActionMetrics:
         else:
             device_precision = 1.0 if len(ref_devices) == 0 else 0.0
 
-        # Parameter-level metrics
+        # Parameter-level metrics with detailed tracking
         total_ref_params = 0
         correct_params = 0
         total_pred_params = 0
+
+        # Track numerical vs categorical parameters separately
+        numerical_tp = 0  # Correct numerical value
+        numerical_fp = 0  # Predicted numerical value incorrectly
+        numerical_fn = 0  # Missing numerical value
+        numerical_tn = 0  # Correctly didn't predict
+
+        categorical_tp = 0
+        categorical_fp = 0
+        categorical_fn = 0
+        categorical_tn = 0
+
+        # Track numerical errors
+        numerical_errors = []  # List of (ref_value, pred_value, error)
+
+        # Define which parameters are numerical
+        numerical_params = {
+            "temperature", "volume", "brightness", "fan_speed",
+            "alarm_volume", "speed", "level"
+        }
 
         for device in ref_devices | pred_devices:
             ref_params = ref_actions.get(device, {})
@@ -260,13 +281,48 @@ class ActionMetrics:
             total_ref_params += len(ref_params)
             total_pred_params += len(pred_params)
 
-            # Check matching parameters
-            for param, ref_value in ref_params.items():
-                if param in pred_params:
+            # Check all possible parameters for this device
+            all_params = set(ref_params.keys()) | set(pred_params.keys())
+
+            for param in all_params:
+                is_numerical = param in numerical_params
+                in_ref = param in ref_params
+                in_pred = param in pred_params
+
+                if in_ref and in_pred:
+                    ref_value = ref_params[param]
                     pred_value = pred_params[param]
-                    # Normalize and compare
+
                     if ActionMetrics._values_match(ref_value, pred_value):
                         correct_params += 1
+                        if is_numerical:
+                            numerical_tp += 1
+                        else:
+                            categorical_tp += 1
+                    else:
+                        if is_numerical:
+                            numerical_fp += 1
+                            # Track the error
+                            if isinstance(ref_value, (int, float)) and isinstance(pred_value, (int, float)):
+                                error = abs(ref_value - pred_value)
+                                numerical_errors.append((ref_value, pred_value, error))
+                        else:
+                            categorical_fp += 1
+
+                elif in_ref and not in_pred:
+                    # Missing parameter (FN)
+                    if is_numerical:
+                        numerical_fn += 1
+                    else:
+                        categorical_fn += 1
+
+                elif not in_ref and in_pred:
+                    # Hallucinated parameter (already counted in FP above if matched badly)
+                    # This case is when we predict something that shouldn't exist
+                    if is_numerical:
+                        numerical_fp += 1
+                    else:
+                        categorical_fp += 1
 
         # Compute metrics
         if total_ref_params > 0:
@@ -284,12 +340,58 @@ class ActionMetrics:
         else:
             param_f1 = 0.0
 
+        # Numerical parameter metrics
+        numerical_precision = 0.0
+        numerical_recall = 0.0
+        numerical_f1 = 0.0
+
+        if numerical_tp + numerical_fp > 0:
+            numerical_precision = numerical_tp / (numerical_tp + numerical_fp)
+
+        if numerical_tp + numerical_fn > 0:
+            numerical_recall = numerical_tp / (numerical_tp + numerical_fn)
+
+        if numerical_precision + numerical_recall > 0:
+            numerical_f1 = 2 * numerical_precision * numerical_recall / (numerical_precision + numerical_recall)
+
+        # Categorical parameter metrics
+        categorical_precision = 0.0
+        categorical_recall = 0.0
+        categorical_f1 = 0.0
+
+        if categorical_tp + categorical_fp > 0:
+            categorical_precision = categorical_tp / (categorical_tp + categorical_fp)
+
+        if categorical_tp + categorical_fn > 0:
+            categorical_recall = categorical_tp / (categorical_tp + categorical_fn)
+
+        if categorical_precision + categorical_recall > 0:
+            categorical_f1 = 2 * categorical_precision * categorical_recall / (categorical_precision + categorical_recall)
+
+        # Mean absolute error for numerical parameters
+        mae = sum(err for _, _, err in numerical_errors) / len(numerical_errors) if numerical_errors else 0.0
+
         return {
             "device_precision": device_precision,
             "device_recall": device_recall,
             "param_precision": param_precision,
             "param_recall": param_recall,
-            "param_f1": param_f1
+            "param_f1": param_f1,
+            # Numerical parameter metrics
+            "numerical_tp": numerical_tp,
+            "numerical_fp": numerical_fp,
+            "numerical_fn": numerical_fn,
+            "numerical_precision": numerical_precision,
+            "numerical_recall": numerical_recall,
+            "numerical_f1": numerical_f1,
+            "numerical_mae": mae,  # Mean absolute error
+            # Categorical parameter metrics
+            "categorical_tp": categorical_tp,
+            "categorical_fp": categorical_fp,
+            "categorical_fn": categorical_fn,
+            "categorical_precision": categorical_precision,
+            "categorical_recall": categorical_recall,
+            "categorical_f1": categorical_f1,
         }
 
     @staticmethod

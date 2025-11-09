@@ -1,0 +1,171 @@
+{
+  "persona_id": "persona_000",
+  "total_turns_evaluated": 3,
+  "aggregated_confusion": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "tn": 10
+  },
+  "per_turn_results": [
+    {
+      "turn": 3,
+      "index": 5,
+      "reference": "AC is now set to heat mode with fan speed at 2. Is there anything else you'd like me to adjust?",
+      "prediction": "Alright, I have your settings set for heating and fan speed at 2. Is there anything else I can assist with today?",
+      "ref_actions": {
+        "ac": {
+          "mode": "heat",
+          "fan_speed": 2
+        }
+      },
+      "pred_actions": {
+        "ac": {
+          "fan_speed": 2
+        }
+      },
+      "confusion": {
+        "tp": [
+          "ac"
+        ],
+        "fp": [],
+        "tn": [
+          "tv",
+          "lights",
+          "speaker",
+          "security"
+        ],
+        "fn": []
+      },
+      "numerical_metrics": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mae": 0.0
+      },
+      "categorical_metrics": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    {
+      "turn": 4,
+      "index": 7,
+      "reference": "Adjusting the lights to 30% brightness with warm color. Would you like to set them to static mode as well?",
+      "prediction": "Sure! Dimming the lights to 30% brightness will reduce the lighting output, making the room feel cooler. Setting the light to Warm Color Tone will help in achieving this effect. Would you like me to turn on the lights and adjust the brightness further?",
+      "ref_actions": {
+        "lights": {
+          "brightness": 30,
+          "color": "warm",
+          "mode": "static"
+        },
+        "security": {
+          "armed": true
+        }
+      },
+      "pred_actions": {
+        "lights": {
+          "brightness": 30,
+          "color": "warm",
+          "power": "on"
+        },
+        "security": {
+          "armed": true
+        }
+      },
+      "confusion": {
+        "tp": [
+          "lights",
+          "security"
+        ],
+        "fp": [],
+        "tn": [
+          "tv",
+          "ac",
+          "speaker"
+        ],
+        "fn": []
+      },
+      "numerical_metrics": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mae": 0.0
+      },
+      "categorical_metrics": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    {
+      "turn": 5,
+      "index": 9,
+      "reference": "Lights are now set to static mode at 30% brightness with warm color. Anything else?",
+      "prediction": "Lighting has been set to 30% brightness with warm color, and static mode has also been selected. Would you like any further adjustments for the room?",
+      "ref_actions": {
+        "lights": {
+          "brightness": 30,
+          "color": "warm",
+          "mode": "static"
+        },
+        "security": {
+          "armed": true
+        }
+      },
+      "pred_actions": {
+        "lights": {
+          "brightness": 30,
+          "color": "warm",
+          "mode": "static"
+        },
+        "security": {
+          "armed": true
+        }
+      },
+      "confusion": {
+        "tp": [
+          "lights",
+          "security"
+        ],
+        "fp": [],
+        "tn": [
+          "tv",
+          "ac",
+          "speaker"
+        ],
+        "fn": []
+      },
+      "numerical_metrics": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mae": 0.0
+      },
+      "categorical_metrics": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  ]
+}

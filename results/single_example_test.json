@@ -1,0 +1,18 @@
+{
+  "persona_id": "persona_000",
+  "session_id": 40,
+  "turn_idx": 7,
+  "reference": "You're welcome. Enjoy your evening with your tea and novel. Let me know if you need anything else.",
+  "prediction": "Glad to hear that! If you need any more adjustments or have any other requests, feel free to ask. Have a great day!",
+  "metrics": {
+    "embedding_similarity": 0.2946201264858246,
+    "device_precision": 1.0,
+    "device_recall": 1.0,
+    "param_precision": 1.0,
+    "param_recall": 1.0,
+    "param_f1": 1.0,
+    "pred_length": 23,
+    "ref_length": 18,
+    "length_ratio": 1.2777777777777777
+  }
+}
