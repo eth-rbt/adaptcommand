@@ -253,7 +253,7 @@ def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path 
         model = model.to(device)
 
     model.eval()
-    print(f"✓ Model loaded")
+    print(f"[OK] Model loaded")
 
     # Load data
     data_config = config["data"]
@@ -267,7 +267,7 @@ def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path 
         split_name,
         max_ex
     )
-    print(f"✓ Loaded {len(dialogues)} dialogues")
+    print(f"[OK] Loaded {len(dialogues)} dialogues")
 
     # Run evaluation
     print(f"\nRunning evaluation...")
@@ -319,7 +319,7 @@ def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path 
         results_file = output_dir / "baseline_results.json"
         with open(results_file, "w") as f:
             json.dump(results, f, indent=2)
-        print(f"\n✓ Results saved to {results_file}")
+        print(f"\n[OK] Results saved to {results_file}")
 
         # Save sample outputs
         samples_file = output_dir / "sample_outputs.jsonl"
@@ -331,7 +331,7 @@ def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path 
                     "reference": ref
                 }
                 f.write(json.dumps(sample) + "\n")
-        print(f"✓ Sample outputs saved to {samples_file}")
+        print(f"[OK] Sample outputs saved to {samples_file}")
 
     return metrics
 

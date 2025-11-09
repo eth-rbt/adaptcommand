@@ -41,9 +41,7 @@ data/cleaned/*
 models/*/
 !models/*/.gitkeep
 
-# Results (may want to version control some)
-results/*/
-!results/*/.gitkeep
+
 
 # Weights & Biases
 wandb/

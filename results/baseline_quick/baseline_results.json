@@ -1,0 +1,55 @@
+{
+  "config": {
+    "model": {
+      "name": "Qwen/Qwen2.5-0.5B-Instruct",
+      "description": "Small 0.5B model for fast benchmarking",
+      "alternatives": [
+        "Qwen/Qwen2.5-1.5B-Instruct",
+        "microsoft/phi-2",
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+      ]
+    },
+    "generation": {
+      "max_new_tokens": 256,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "do_sample": true,
+      "repetition_penalty": 1.1
+    },
+    "prompt": {
+      "system_template": "You are a helpful smart home assistant. Help the user control their devices by understanding their preferences and the current context.",
+      "format": "chat",
+      "include_context": true,
+      "max_context_messages": 5
+    },
+    "evaluation": {
+      "metrics": [
+        "embedding_similarity",
+        "action_accuracy"
+      ],
+      "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "compute_per_user": true
+    },
+    "data": {
+      "dialogues_file": "data/cleaned/dialogs_clean.jsonl",
+      "splits_file": "data/splits/edgesplits.json",
+      "eval_split": "test",
+      "max_examples": null
+    },
+    "device": "auto",
+    "batch_size": 8,
+    "seed": 42
+  },
+  "metrics": {
+    "embedding_similarity": 0.6133925318717957,
+    "device_precision": 0.88,
+    "device_recall": 0.88,
+    "param_precision": 0.8533333333333333,
+    "param_recall": 0.8366666666666666,
+    "param_f1": 0.8347619047619047,
+    "avg_pred_length": 23.1,
+    "avg_ref_length": 14.32,
+    "length_ratio": 1.6131284916201118
+  },
+  "num_examples": 50
+}
