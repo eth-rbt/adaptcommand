@@ -30,6 +30,11 @@
         "optim": "adamw_torch",
         "report_to": "none"
     },
+    "generation": {
+        "max_new_tokens": 256,
+        "temperature": 0.7,
+        "top_p": 0.9
+    },
     "max_length": 512,
     "seed": 42
 }

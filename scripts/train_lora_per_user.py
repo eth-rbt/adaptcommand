@@ -19,6 +19,9 @@ from peft import LoraConfig, get_peft_model, TaskType, PeftModel
 from datasets import Dataset
 from typing import List, Dict
 import numpy as np
+from sentence_transformers import SentenceTransformer
+from tqdm import tqdm
+from action_metrics import ActionExtractor, ActionMetrics
 
 
 def load_config(config_file: Path) -> dict:
@@ -101,7 +104,8 @@ def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int =
     """
     Create training examples from dialogues.
 
-    Each dialogue is converted to a full chat conversation using the model's chat template.
+    Creates one training example for EACH assistant turn in each dialogue.
+    This ensures the model learns from all assistant responses, not just full conversations.
 
     Args:
         dialogues: List of dialogue dictionaries
@@ -110,24 +114,30 @@ def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int =
         system_prompt: Optional system prompt
 
     Returns:
-        List of formatted training texts
+        List of formatted training texts (one per assistant turn)
     """
     training_texts = []
 
     for dialogue in dialogues:
         messages = dialogue["messages"]
 
-        # Format messages
-        formatted_messages = format_chat_messages(messages, system_prompt)
+        # Create one training example for each assistant turn
+        for i, msg in enumerate(messages):
+            if msg["role"] == "assistant":
+                # Get all messages up to and including this assistant turn
+                context_messages = messages[:i+1]
 
-        # Apply chat template
-        text = tokenizer.apply_chat_template(
-            formatted_messages,
-            tokenize=False,
-            add_generation_prompt=False
-        )
+                # Format messages
+                formatted_messages = format_chat_messages(context_messages, system_prompt)
 
-        training_texts.append(text)
+                # Apply chat template
+                text = tokenizer.apply_chat_template(
+                    formatted_messages,
+                    tokenize=False,
+                    add_generation_prompt=False
+                )
+
+                training_texts.append(text)
 
     return training_texts
 
@@ -152,6 +162,157 @@ def compute_metrics(eval_pred):
     # Calculate perplexity from loss
     # Note: Trainer computes loss automatically, we just format it here
     return {}
+
+
+def evaluate_with_generation(
+    model,
+    tokenizer,
+    dialogues: List[Dict],
+    system_prompt: str,
+    device: str,
+    max_new_tokens: int = 256,
+    temperature: float = 0.7,
+    top_p: float = 0.9
+) -> Dict[str, float]:
+    """
+    Evaluate model by generating responses and computing metrics.
+
+    This matches the baseline benchmark evaluation:
+    - Embedding similarity
+    - Action accuracy (device/parameter precision/recall)
+
+    Args:
+        model: The model to evaluate
+        tokenizer: Tokenizer
+        dialogues: List of dialogue dictionaries
+        system_prompt: System prompt to use
+        device: Device to run on
+        max_new_tokens: Max tokens to generate
+        temperature: Sampling temperature
+        top_p: Nucleus sampling parameter
+
+    Returns:
+        Dictionary of metrics
+    """
+    model.eval()
+
+    predictions = []
+    references = []
+
+    print(f"\nGenerating responses for {len(dialogues)} dialogues...")
+
+    for dialogue in tqdm(dialogues, desc="Evaluating"):
+        messages = dialogue["messages"]
+
+        # Find last assistant message to predict
+        for i in range(len(messages) - 1, -1, -1):
+            if messages[i]["role"] == "assistant":
+                # Get context (everything before this assistant turn)
+                context_messages = messages[:i]
+
+                # Format for generation
+                formatted_messages = []
+                if system_prompt:
+                    formatted_messages.append({
+                        "role": "system",
+                        "content": system_prompt
+                    })
+
+                for msg in context_messages:
+                    formatted_messages.append({
+                        "role": msg["role"],
+                        "content": msg["text"]
+                    })
+
+                # Generate
+                prompt = tokenizer.apply_chat_template(
+                    formatted_messages,
+                    tokenize=False,
+                    add_generation_prompt=True
+                )
+
+                inputs = tokenizer(prompt, return_tensors="pt").to(device)
+
+                with torch.no_grad():
+                    outputs = model.generate(
+                        **inputs,
+                        max_new_tokens=max_new_tokens,
+                        temperature=temperature,
+                        top_p=top_p,
+                        do_sample=True,
+                        pad_token_id=tokenizer.eos_token_id
+                    )
+
+                # Decode
+                generated_text = tokenizer.decode(
+                    outputs[0][inputs["input_ids"].shape[1]:],
+                    skip_special_tokens=True
+                ).strip()
+
+                predictions.append(generated_text)
+                references.append(messages[i]["text"])
+                break
+
+    # Compute metrics
+    print(f"\nComputing metrics on {len(predictions)} examples...")
+    metrics = {}
+
+    # 1. Embedding similarity
+    print("  - Computing embedding similarity...")
+    embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    pred_embeddings = embedding_model.encode(predictions)
+    ref_embeddings = embedding_model.encode(references)
+
+    similarities = []
+    for pred_emb, ref_emb in zip(pred_embeddings, ref_embeddings):
+        sim = np.dot(pred_emb, ref_emb) / (np.linalg.norm(pred_emb) * np.linalg.norm(ref_emb))
+        similarities.append(sim)
+
+    metrics["embedding_similarity"] = float(np.mean(similarities))
+
+    # 2. Action-based metrics
+    print("  - Computing action accuracy...")
+    extractor = ActionExtractor()
+
+    device_precisions = []
+    device_recalls = []
+    param_precisions = []
+    param_recalls = []
+    param_f1s = []
+    numerical_precisions = []
+    numerical_recalls = []
+
+    for pred, ref in zip(predictions, references):
+        pred_actions = extractor.extract_actions(pred)
+        ref_actions = extractor.extract_actions(ref)
+
+        action_metrics = ActionMetrics.compare_actions(pred_actions, ref_actions)
+
+        device_precisions.append(action_metrics["device_precision"])
+        device_recalls.append(action_metrics["device_recall"])
+        param_precisions.append(action_metrics["param_precision"])
+        param_recalls.append(action_metrics["param_recall"])
+        param_f1s.append(action_metrics["param_f1"])
+        numerical_precisions.append(action_metrics["numerical_precision"])
+        numerical_recalls.append(action_metrics["numerical_recall"])
+
+    metrics["device_precision"] = float(np.mean(device_precisions))
+    metrics["device_recall"] = float(np.mean(device_recalls))
+    metrics["param_precision"] = float(np.mean(param_precisions))
+    metrics["param_recall"] = float(np.mean(param_recalls))
+    metrics["param_f1"] = float(np.mean(param_f1s))
+    metrics["numerical_precision"] = float(np.mean(numerical_precisions))
+    metrics["numerical_recall"] = float(np.mean(numerical_recalls))
+
+    # 3. Length statistics
+    pred_lengths = [len(p.split()) for p in predictions]
+    ref_lengths = [len(r.split()) for r in references]
+
+    metrics["avg_pred_length"] = float(np.mean(pred_lengths))
+    metrics["avg_ref_length"] = float(np.mean(ref_lengths))
+    metrics["length_ratio"] = float(np.mean(pred_lengths) / np.mean(ref_lengths)) if np.mean(ref_lengths) > 0 else 0
+
+    return metrics
 
 
 def train_lora_for_persona(
@@ -324,17 +485,59 @@ def train_lora_for_persona(
     print(f"\n[OK] Training complete!")
     print(f"[OK] LoRA adapter saved to: {output_dir}")
 
-    # Evaluation on validation set
+    # Evaluation with generation-based metrics
     if use_val:
-        print(f"\nRunning final evaluation on validation set...")
-        eval_results = trainer.evaluate()
+        print(f"\n{'='*60}")
+        print(f"VALIDATION SET EVALUATION")
+        print(f"{'='*60}")
 
-        print(f"\nValidation Results:")
-        for key, value in eval_results.items():
-            print(f"  {key}: {value:.4f}")
+        val_metrics = evaluate_with_generation(
+            model=model,
+            tokenizer=tokenizer,
+            dialogues=val_dialogues,
+            system_prompt=system_prompt,
+            device=device,
+            max_new_tokens=config["generation"].get("max_new_tokens", 256),
+            temperature=config["generation"].get("temperature", 0.7),
+            top_p=config["generation"].get("top_p", 0.9)
+        )
 
-        trainer.log_metrics("eval", eval_results)
-        trainer.save_metrics("eval", eval_results)
+        print(f"\nValidation Metrics:")
+        for key, value in val_metrics.items():
+            print(f"  {key:30s}: {value:.4f}")
+
+        # Save validation metrics
+        with open(output_dir / "val_metrics.json", "w") as f:
+            json.dump(val_metrics, f, indent=2)
+        print(f"\n[OK] Validation metrics saved to {output_dir / 'val_metrics.json'}")
+
+    # Evaluate on test set
+    print(f"\n{'='*60}")
+    print(f"TEST SET EVALUATION")
+    print(f"{'='*60}")
+
+    test_dialogues = load_persona_data(data_path, splits_path, persona_id, "test")
+    print(f"[OK] Loaded {len(test_dialogues)} test dialogues")
+
+    test_metrics = evaluate_with_generation(
+        model=model,
+        tokenizer=tokenizer,
+        dialogues=test_dialogues,
+        system_prompt=system_prompt,
+        device=device,
+        max_new_tokens=config["generation"].get("max_new_tokens", 256),
+        temperature=config["generation"].get("temperature", 0.7),
+        top_p=config["generation"].get("top_p", 0.9)
+    )
+
+    print(f"\nTest Metrics:")
+    for key, value in test_metrics.items():
+        print(f"  {key:30s}: {value:.4f}")
+
+    # Save test metrics
+    with open(output_dir / "test_metrics.json", "w") as f:
+        json.dump(test_metrics, f, indent=2)
+    print(f"\n[OK] Test metrics saved to {output_dir / 'test_metrics.json'}")
 
     return output_dir
 
