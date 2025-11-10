@@ -393,7 +393,7 @@ def compute_metrics(predictions: list, references: list, config: dict, device_de
     return metrics
 
 
-def run_benchmark(config_file: Path, max_examples: int = None, output_dir: Path = None):
+def run_benchmark(config_file: Path, max_examples: int = None, zoutput_dir: Path = None):
     """Run the baseline benchmark."""
     print("="*60)
     print("BASELINE BENCHMARK")

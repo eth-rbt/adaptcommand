@@ -1,0 +1,559 @@
+================================================================================
+LORA TRAINING FOR PER-USER MODELS - CODEBASE EXPLORATION SUMMARY
+================================================================================
+
+EXPLORATION COMPLETED: November 9, 2025
+Total dialogues analyzed: 10,000
+Total personas: 200
+Baseline model: Qwen/Qwen2.5-0.5B-Instruct
+
+================================================================================
+1. SCRIPTS DIRECTORY ANALYSIS
+================================================================================
+
+Core Scripts Found:
+  /Users/ethrbt/code/adaptcommand/scripts/
+
+  1. run_baseline_benchmark.py (26KB, 700 lines)
+     - Main baseline evaluation script
+     - Loads model and test data using persona splits
+     - Runs turn-by-turn dialogue evaluation
+     - Computes ROUGE, embedding similarity, and action accuracy metrics
+     - Generates per-persona and global aggregated results
+     - Output: JSON results, CSV summary, sample predictions
+     
+  2. action_metrics.py (16KB)
+     - Smart home specific metric computation
+     - Classes: ActionExtractor, ActionMetrics
+     - Extracts device actions from text responses
+     - Compares predicted vs reference actions
+     - Devices: TV, AC, Lights, Speaker, Security
+     
+  3. create_splits.py (10KB)
+     - Creates per-user time-aware train/val/test splits
+     - Split ratio: 60% train, 20% val, 20% test
+     - Per-user splits ensure no data leakage
+     - Optional online micro-batch for incremental learning
+     
+  4. clean_data.py (8.6KB)
+     - Data cleaning and normalization
+     - Whitespace normalization
+     - Degenerate dialogue filtering
+     - Standardizes message format
+     
+  5. inspect_jsonl.py (3.8KB)
+     - Data inspection utility
+     - Shows random or first N entries from JSONL files
+     - Helps understand data structure
+     
+  6. inspect_data_structure.py (2.8KB)
+     - Analyzes relationship between characters, routines, sessions
+     - Shows data mapping and statistics
+     - Validates data structure
+     
+  7. validate_data.py (13KB)
+     - Data validation and quality checks
+     - Ensures splits are valid
+     - Checks for edge cases
+     
+  8. load_edgewise_data.py (7.1KB)
+     - Loads original EdgeWisePersona dataset
+     - Initial data exploration
+
+Key Utility Functions Already Implemented:
+  - load_data(): Load dialogues by split
+  - format_prompt(): Convert dialogue to chat messages
+  - generate_response(): Run model inference
+  - compute_metrics(): Calculate ROUGE, embedding sim, action accuracy
+  - compute_per_persona_metrics(): Aggregate metrics by persona
+
+================================================================================
+2. DATA FORMAT & STRUCTURE
+================================================================================
+
+Data Location: /Users/ethrbt/code/adaptcommand/data/
+
+Directory Structure:
+  data/
+  ├── raw/                 # Original EdgeWisePersona files
+  ├── cleaned/             # Processed dialogues
+  │   └── dialogs_clean.jsonl    (10,000 lines)
+  └── splits/              # Per-user train/val/test indices
+      └── edgesplits.json
+
+Data File Format (JSONL):
+  - File: data/cleaned/dialogs_clean.jsonl
+  - Lines: 10,000 dialogues
+  - Format: One JSON object per line
+
+Dialogue Structure:
+{
+  "persona_id": "persona_000",        # User identifier (200 unique)
+  "session_id": 0,                    # Dialogue index within user
+  "character": "Ethan is a reserved librarian...",  # User personality
+  "routines": [                       # Smart home preferences
+    {
+      "triggers": {                   # Conditions
+        "time_of_day": "evening",
+        "day_of_week": "weekday",
+        "weather": "rainy",
+        "outdoor_temp": "cold"
+      },
+      "actions": {                    # Actions under conditions
+        "tv": null,
+        "ac": {"temperature": 22, "mode": "heat", "fan_speed": 1},
+        "lights": {"brightness": 50, "color": "warm", "mode": "static"},
+        "speaker": {"volume": 30, "equalizer": "balanced"},
+        "security": null
+      }
+    }
+    // ... more routines ...
+  ],
+  "messages": [                       # Dialogue turns
+    {"role": "user", "text": "Could you turn on the lights?"},
+    {"role": "assistant", "text": "Of course. What brightness level?"},
+    // ... more messages ...
+  ]
+}
+
+Data Split File (data/splits/edgesplits.json):
+{
+  "persona_000": {
+    "train": [0, 1, 2, ..., 29],     # Dialogue indices for training (60%)
+    "val": [30, 31, 32, ..., 39],    # Validation indices (20%)
+    "test": [40, 41, 42, ..., 49]    # Test indices (20%)
+  },
+  "persona_001": { ... },
+  // ... 200 personas total ...
+}
+
+Data Statistics:
+  - Total dialogues: 10,000
+  - Total unique personas: 200
+  - Avg dialogues per persona: 50
+  - Avg messages per dialogue: ~14
+  - Avg messages per turn: 1-2 exchanges
+  
+  Per-Persona Split Sizes:
+    - Train: ~30 dialogues (60%)
+    - Val: ~10 dialogues (20%)
+    - Test: ~10 dialogues (20%)
+
+Key Insight: Small per-persona datasets (~30 training examples) means:
+  - High risk of overfitting
+  - Need regularization (weight decay, early stopping)
+  - Use lower LoRA ranks (r=4-8 instead of r=16-32)
+
+================================================================================
+3. MODEL ARCHITECTURE & CONFIGURATION
+================================================================================
+
+Base Model:
+  Name: Qwen/Qwen2.5-0.5B-Instruct
+  Type: CausalLM (HuggingFace AutoModelForCausalLM)
+  Size: 0.5B parameters
+  Source: HuggingFace Model Hub (auto-downloads)
+  
+  Alternative Models (in config):
+    - Qwen/Qwen2.5-1.5B-Instruct (1.5B, better quality)
+    - TinyLlama/TinyLlama-1.1B-Chat-v1.0 (1.1B)
+    - microsoft/phi-2 (2.7B)
+
+Model Loading Pattern:
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+model_name = "Qwen/Qwen2.5-0.5B-Instruct"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype=torch.float16,
+    device_map="cuda"  # or "mps" for Mac, "cpu"
+)
+
+Configuration File: configs/baseline_v1.0.json
+{
+  "model": {
+    "name": "Qwen/Qwen2.5-0.5B-Instruct"
+  },
+  "generation": {
+    "max_new_tokens": 256,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "do_sample": true,
+    "repetition_penalty": 1.1
+  },
+  "prompt": {
+    "system_template": "You are a helpful smart home assistant...",
+    "max_context_messages": 5
+  },
+  "evaluation": {
+    "metrics": ["embedding_similarity", "action_accuracy"],
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  "data": {
+    "dialogues_file": "data/cleaned/dialogs_clean.jsonl",
+    "splits_file": "data/splits/edgesplits.json"
+  }
+}
+
+Tokenizer: Uses HuggingFace chat template (apply_chat_template())
+
+================================================================================
+4. EVALUATION INFRASTRUCTURE
+================================================================================
+
+Baseline Benchmark Script: scripts/run_baseline_benchmark.py
+  Command: python scripts/run_baseline_benchmark.py --config configs/baseline_v1.0.json
+
+Metrics Computed:
+  
+  1. ROUGE Metrics (Text Similarity):
+     - ROUGE-1 F1: Unigram overlap
+     - ROUGE-2 F1: Bigram overlap
+     - ROUGE-L F1: Longest common subsequence
+     - Implementation: rouge_score.rouge_scorer
+     
+  2. Embedding Similarity:
+     - Model: sentence-transformers/all-MiniLM-L6-v2
+     - Metric: Cosine similarity between embeddings
+     - Captures semantic similarity beyond surface text
+     
+  3. Action Accuracy (Smart Home Specific):
+     - Device-level: Precision, recall for device detection
+     - Parameter-level: Precision, recall, F1 for parameter extraction
+     - Numerical parameters: Precision, recall, F1, MAE (mean absolute error)
+     - Categorical parameters: Precision, recall, F1
+     
+  4. Length Statistics:
+     - Average prediction length
+     - Average reference length
+     - Length ratio (prediction / reference)
+
+Output Format:
+  - baseline_results.json: Global metrics
+  - per_persona_results.json: Per-persona breakdown
+  - per_persona_summary.csv: Readable table
+  - sample_outputs.jsonl: First 20 example predictions
+
+How Evaluation Works:
+  1. Load test split dialogues
+  2. For each dialogue:
+     - For each assistant turn (skip first 2):
+       - Extract context messages (ground truth history)
+       - Generate model response
+       - Compare vs reference response
+       - Compute all metrics
+  3. Aggregate metrics globally and per-persona
+  4. Save results
+
+================================================================================
+5. TRAINING INFRASTRUCTURE & UTILITIES
+================================================================================
+
+What Already Exists:
+  - PEFT library (v0.7.0+) in requirements.txt for LoRA support
+  - HuggingFace Transformers for model loading/training
+  - HuggingFace Datasets for efficient data processing
+  - Accelerate library for distributed training support
+  - WandB and TensorBoard for experiment tracking (in requirements)
+
+Data Loading Pattern (from baseline_benchmark.py):
+def load_data(dialogues_file, splits_file, split_name):
+    """Load and filter dialogues by split."""
+    dialogues = []
+    with open(dialogues_file, "r") as f:
+        for line in f:
+            dialogues.append(json.loads(line))
+    
+    with open(splits_file, "r") as f:
+        splits = json.load(f)
+    
+    split_dialogues = []
+    for persona_splits in splits.values():
+        for idx in persona_splits[split_name]:
+            split_dialogues.append(dialogues[idx])
+    
+    return split_dialogues
+
+Prompt Formatting Pattern:
+def format_prompt(dialogue, config, up_to_turn=-1):
+    """Format dialogue into chat messages."""
+    messages = dialogue["messages"]
+    context_messages = messages[:up_to_turn]
+    
+    prompt_messages = []
+    prompt_messages.append({
+        "role": "system",
+        "content": config["prompt"]["system_template"]
+    })
+    
+    max_context = config["prompt"].get("max_context_messages", 5)
+    start_idx = max(0, len(context_messages) - max_context * 2)
+    
+    for msg in context_messages[start_idx:]:
+        prompt_messages.append({
+            "role": msg["role"],
+            "content": msg["text"]
+        })
+    
+    return prompt_messages, messages[up_to_turn]["text"]
+
+Generation Pattern:
+def generate_response(model, tokenizer, messages, config, device):
+    """Generate model response."""
+    prompt = tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True
+    )
+    inputs = tokenizer(prompt, return_tensors="pt").to(device)
+    
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=config["generation"]["max_new_tokens"],
+            temperature=config["generation"]["temperature"],
+            top_p=config["generation"]["top_p"],
+            do_sample=config["generation"]["do_sample"],
+            pad_token_id=tokenizer.eos_token_id
+        )
+    
+    generated_text = tokenizer.decode(
+        outputs[0][inputs["input_ids"].shape[1]:],
+        skip_special_tokens=True
+    )
+    return generated_text.strip()
+
+================================================================================
+6. KEY INSIGHTS FOR LORA IMPLEMENTATION
+================================================================================
+
+Critical Success Factors:
+
+1. Small Per-User Datasets:
+   - Only ~30 training examples per persona
+   - High overfitting risk
+   - Recommendation: Lower LoRA rank (r=8), strong regularization
+   
+2. Per-User Model Directory Structure:
+   - Each persona gets their own LoRA adapter
+   - Storage: models/lora_per_user/<persona_id>/
+   - Size: ~5MB per adapter × 200 personas = 1GB total
+   - Inference: Load base model + specific adapter for each user
+   
+3. Evaluation Strategy:
+   - Reuse baseline metrics (ROUGE, embedding similarity, action accuracy)
+   - Compute improvement over baseline per-persona
+   - Track which personas benefit most
+   - Validate model learns vs memorizes
+   
+4. Training Considerations:
+   - Learning rate: 2e-4 to 5e-4 for LoRA
+   - Batch size: 4-8 (small model, small dataset)
+   - Epochs: 3-5 (avoid overfitting)
+   - Early stopping: Watch validation loss
+   - Weight decay: 0.01 for regularization
+   
+5. Data Integrity:
+   - Strict persona-level splits (no data sharing)
+   - No leakage from test to train
+   - Evaluate only on held-out test set
+
+What to Build:
+  1. train_lora_per_user.py: Training loop for each persona
+  2. eval_lora.py: Evaluation with adapters vs baseline
+  3. lora_training.json: Hyperparameter config
+  4. Analysis script: Compare improvements across personas
+
+================================================================================
+7. DEPENDENCIES ALREADY INSTALLED
+================================================================================
+
+Core ML Libraries:
+  - torch >= 2.0.0
+  - transformers >= 4.35.0
+  - peft >= 0.7.0             <-- LORA SUPPORT (KEY!)
+  - accelerate >= 0.25.0      <-- Distributed training
+
+Data Processing:
+  - datasets >= 2.14.0        <-- Efficient data loading
+  - pandas >= 2.0.0
+  - numpy >= 1.24.0
+
+Evaluation & Metrics:
+  - sentence-transformers >= 2.2.0  <-- Embedding similarity
+  - rouge-score >= 0.1.2            <-- ROUGE metrics
+  - evaluate >= 0.4.0
+
+Tracking & Monitoring:
+  - wandb >= 0.15.0           <-- Experiment tracking
+  - tensorboard >= 2.13.0     <-- Training visualization
+
+Other Utilities:
+  - tqdm >= 4.65.0            <-- Progress bars
+  - scikit-learn >= 1.3.0
+  - matplotlib >= 3.7.0
+  - seaborn >= 0.12.0
+  - plotly >= 5.14.0
+
+NO additional dependencies needed for basic LoRA training!
+
+================================================================================
+8. RECOMMENDED NEXT STEPS
+================================================================================
+
+Phase 1: Single Persona Training (Debug)
+  [ ] Create scripts/train_lora_per_user.py with:
+      - Load single persona data
+      - Configure PEFT LoRA
+      - Train using HuggingFace Trainer
+      - Save adapter
+  [ ] Test on persona_000
+  [ ] Verify adapter saves/loads correctly
+  
+Phase 2: Evaluation
+  [ ] Create scripts/eval_lora.py with:
+      - Load base model + persona adapter
+      - Evaluate on test set
+      - Compare metrics vs baseline
+      - Save results
+  [ ] Test on persona_000
+  
+Phase 3: Scale to All Personas
+  [ ] Loop training over all 200 personas
+  [ ] Track progress (use TQDM)
+  [ ] Save results per-persona
+  
+Phase 4: Analysis
+  [ ] Create analysis script:
+      - Compare improvements by persona
+      - Identify which personas benefit most
+      - Correlation with persona characteristics
+      - Summary statistics
+
+Configuration Template Needed:
+  configs/lora_training.json
+  {
+    "lora": {
+      "r": 8,
+      "lora_alpha": 16,
+      "target_modules": ["q_proj", "v_proj"],
+      "lora_dropout": 0.05
+    },
+    "training": {
+      "learning_rate": 5e-4,
+      "num_train_epochs": 5,
+      "per_device_train_batch_size": 4,
+      "weight_decay": 0.01
+    },
+    "model": {
+      "name": "Qwen/Qwen2.5-0.5B-Instruct"
+    },
+    "data": {
+      "dialogues_file": "data/cleaned/dialogs_clean.jsonl",
+      "splits_file": "data/splits/edgesplits.json",
+      "max_context_messages": 5
+    }
+  }
+
+================================================================================
+9. FILE REFERENCE GUIDE
+================================================================================
+
+Data Files:
+  data/cleaned/dialogs_clean.jsonl         (10,000 dialogues)
+  data/splits/edgesplits.json              (train/val/test indices)
+  
+Configuration:
+  configs/baseline_v1.0.json               (Model + eval config)
+  configs/lora_training.json               (TO CREATE)
+  
+Scripts:
+  scripts/run_baseline_benchmark.py        (Baseline evaluation)
+  scripts/action_metrics.py                (Smart home metrics)
+  scripts/train_lora_per_user.py           (TO CREATE)
+  scripts/eval_lora.py                     (TO CREATE)
+  
+Models:
+  models/lora_per_user/{persona_id}/       (TO CREATE - adapter storage)
+  
+Results:
+  results/baseline/                        (Baseline results)
+  results/lora/                            (TO CREATE - LoRA results)
+  
+Documentation:
+  design.md                                (Project design)
+  plan.md                                  (Implementation roadmap)
+  QUICKSTART.md                            (Quick reference)
+  lora_training_guide.md                   (THIS GUIDE)
+  quick_reference.md                       (Code snippets)
+
+================================================================================
+10. QUICK START CHECKLIST
+================================================================================
+
+Pre-Implementation:
+  [X] Explore codebase structure
+  [X] Understand data format
+  [X] Understand model and config
+  [X] Understand evaluation metrics
+  [X] Verify PEFT installed
+
+To Implement:
+  [ ] Create training script (train_lora_per_user.py)
+  [ ] Create evaluation script (eval_lora.py)
+  [ ] Create training config (lora_training.json)
+  [ ] Train on single persona to debug
+  [ ] Evaluate single persona
+  [ ] Scale to all personas
+  [ ] Analyze results
+  [ ] Compare with baseline
+
+Key Hyperparameters to Tune:
+  - LoRA rank (r): Start with 8
+  - Learning rate: Try 5e-4
+  - Batch size: Try 4
+  - Epochs: Try 5
+  - Weight decay: Try 0.01
+
+Testing Strategy:
+  1. Debug on persona_000 only
+  2. Check adapter size/format
+  3. Verify inference works
+  4. Compare metrics vs baseline
+  5. Fix any issues
+  6. Scale to all personas
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The AdaptCommand codebase is well-structured for LoRA implementation:
+
+Strengths:
+  + Clean data with proper per-user splits
+  + Established evaluation infrastructure
+  + PEFT library already installed
+  + Clear patterns for data loading and metrics
+  + Excellent documentation
+  + Small model (0.5B) for fast iteration
+  + Small per-user datasets suitable for LoRA
+
+Challenges:
+  - Small training sets per persona (~30 examples) means overfitting risk
+  - 200 personas means 200 adapters to train (but parallelizable)
+  - Need careful hyperparameter tuning for small datasets
+
+You have all the pieces in place. Main work is:
+  1. Writing the training loop
+  2. Wrapping it per-persona
+  3. Evaluating against baseline
+  4. Analyzing improvements
+
+Estimated effort: 1-2 days to implement, 1-2 hours to train all personas on GPU
+
+Good luck!
+
+================================================================================
+Generated: November 9, 2025
+Repository: /Users/ethrbt/code/adaptcommand
+================================================================================

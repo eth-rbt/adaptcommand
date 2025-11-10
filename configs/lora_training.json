@@ -1,0 +1,35 @@
+{
+    "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+    "data_path": "data/cleaned/dialogs_clean.jsonl",
+    "splits_path": "data/splits/edgesplits.json",
+    "output_dir": "models/lora_adapters",
+    "lora_config": {
+        "r": 8,
+        "lora_alpha": 16,
+        "target_modules": ["q_proj", "v_proj"],
+        "lora_dropout": 0.05,
+        "bias": "none",
+        "task_type": "CAUSAL_LM"
+    },
+    "training_args": {
+        "num_train_epochs": 5,
+        "per_device_train_batch_size": 1,
+        "per_device_eval_batch_size": 1,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": 5e-4,
+        "weight_decay": 0.01,
+        "warmup_ratio": 0.1,
+        "logging_steps": 10,
+        "save_strategy": "epoch",
+        "evaluation_strategy": "epoch",
+        "load_best_model_at_end": true,
+        "metric_for_best_model": "eval_loss",
+        "greater_is_better": false,
+        "save_total_limit": 2,
+        "fp16": false,
+        "optim": "adamw_torch",
+        "report_to": "none"
+    },
+    "max_length": 512,
+    "seed": 42
+}
