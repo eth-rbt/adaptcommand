@@ -1,7 +1,9 @@
 """
-LoRA Training Script for Per-User Personalization
+Unified LoRA Training Script
 
-This script trains a LoRA adapter for a specific persona using their training data.
+This script trains a single LoRA adapter on ALL training data from all 200 personas.
+Unlike train_lora_per_user.py which trains separate adapters per persona,
+this trains one unified model on the combined dataset.
 """
 
 import json
@@ -15,13 +17,14 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling
 )
-from peft import LoraConfig, get_peft_model, TaskType, PeftModel
+from peft import LoraConfig, get_peft_model, TaskType
 from datasets import Dataset
 from typing import List, Dict
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 from action_metrics import ActionExtractor, ActionMetrics
+import sys
 
 
 def load_config(config_file: Path) -> dict:
@@ -30,18 +33,17 @@ def load_config(config_file: Path) -> dict:
         return json.load(f)
 
 
-def load_persona_data(dialogues_file: Path, splits_file: Path, persona_id: str, split_name: str) -> List[Dict]:
+def load_all_split_data(dialogues_file: Path, splits_file: Path, split_name: str) -> List[Dict]:
     """
-    Load all dialogues for a specific persona and split.
+    Load all dialogues for a specific split across ALL personas.
 
     Args:
         dialogues_file: Path to dialogues JSONL file
         splits_file: Path to splits JSON file
-        persona_id: The persona ID to load data for
         split_name: "train", "val", or "test"
 
     Returns:
-        List of dialogue dictionaries
+        List of dialogue dictionaries from all personas for the specified split
     """
     # Load all dialogues
     dialogues = []
@@ -53,29 +55,28 @@ def load_persona_data(dialogues_file: Path, splits_file: Path, persona_id: str, 
     with open(splits_file, "r") as f:
         splits = json.load(f)
 
-    # Get indices for this persona's split
-    if persona_id not in splits:
-        raise ValueError(f"Persona {persona_id} not found in splits file")
-
-    persona_splits = splits[persona_id]
-    if split_name not in persona_splits:
-        raise ValueError(f"Split {split_name} not found for persona {persona_id}")
-
-    indices = persona_splits[split_name]
+    # Collect indices for all personas' split
+    all_indices = []
+    for persona_id, persona_splits in splits.items():
+        if split_name in persona_splits:
+            all_indices.extend(persona_splits[split_name])
 
     # Get dialogues for these indices
-    persona_dialogues = [dialogues[idx] for idx in indices]
+    split_dialogues = [dialogues[idx] for idx in all_indices]
 
-    return persona_dialogues
+    return split_dialogues
 
 
-def format_chat_messages(messages: List[Dict], system_prompt: str = None) -> List[Dict]:
+def format_chat_messages(messages: List[Dict], system_prompt: str = None,
+                         include_persona: bool = True, character: str = None) -> List[Dict]:
     """
     Format dialogue messages into chat format.
 
     Args:
         messages: List of message dicts with "role" and "text"
         system_prompt: Optional system prompt to prepend
+        include_persona: Whether to include persona description in system prompt
+        character: Character description to include
 
     Returns:
         List of formatted messages for chat template
@@ -84,9 +85,15 @@ def format_chat_messages(messages: List[Dict], system_prompt: str = None) -> Lis
 
     # Add system prompt if provided
     if system_prompt:
+        final_system = system_prompt
+
+        # Optionally append persona description
+        if include_persona and character:
+            final_system = f"{system_prompt}\n\nUser Profile: {character}"
+
         formatted_messages.append({
             "role": "system",
-            "content": system_prompt
+            "content": final_system
         })
 
     # Add dialogue messages
@@ -100,18 +107,19 @@ def format_chat_messages(messages: List[Dict], system_prompt: str = None) -> Lis
 
 
 def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int = 512,
-                            system_prompt: str = None) -> List[str]:
+                            system_prompt: str = None, include_persona: bool = True) -> List[str]:
     """
     Create training examples from dialogues.
 
     Creates one training example for EACH assistant turn in each dialogue.
-    This ensures the model learns from all assistant responses, not just full conversations.
+    This ensures the model learns from all assistant responses.
 
     Args:
         dialogues: List of dialogue dictionaries
         tokenizer: Tokenizer with chat template
         max_length: Maximum sequence length
         system_prompt: Optional system prompt
+        include_persona: Whether to include persona description
 
     Returns:
         List of formatted training texts (one per assistant turn)
@@ -120,6 +128,7 @@ def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int =
 
     for dialogue in dialogues:
         messages = dialogue["messages"]
+        character = dialogue.get("character", None)
 
         # Create one training example for each assistant turn
         for i, msg in enumerate(messages):
@@ -128,7 +137,12 @@ def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int =
                 context_messages = messages[:i+1]
 
                 # Format messages
-                formatted_messages = format_chat_messages(context_messages, system_prompt)
+                formatted_messages = format_chat_messages(
+                    context_messages,
+                    system_prompt,
+                    include_persona,
+                    character
+                )
 
                 # Apply chat template
                 text = tokenizer.apply_chat_template(
@@ -144,7 +158,6 @@ def create_training_examples(dialogues: List[Dict], tokenizer, max_length: int =
 
 def tokenize_function(examples, tokenizer, max_length):
     """Tokenize examples for training."""
-    # The DataCollatorForLanguageModeling will automatically create labels from input_ids
     outputs = tokenizer(
         examples["text"],
         truncation=True,
@@ -155,31 +168,20 @@ def tokenize_function(examples, tokenizer, max_length):
     return outputs
 
 
-def compute_metrics(eval_pred):
-    """Compute metrics during evaluation."""
-    logits, labels = eval_pred
-
-    # Calculate perplexity from loss
-    # Note: Trainer computes loss automatically, we just format it here
-    return {}
-
-
 def evaluate_with_generation(
     model,
     tokenizer,
     dialogues: List[Dict],
     system_prompt: str,
     device: str,
+    include_persona: bool = True,
     max_new_tokens: int = 256,
     temperature: float = 0.7,
-    top_p: float = 0.9
+    top_p: float = 0.9,
+    batch_size: int = 1
 ) -> Dict[str, float]:
     """
     Evaluate model by generating responses and computing metrics.
-
-    This matches the baseline benchmark evaluation:
-    - Embedding similarity
-    - Action accuracy (device/parameter precision/recall)
 
     Args:
         model: The model to evaluate
@@ -187,9 +189,11 @@ def evaluate_with_generation(
         dialogues: List of dialogue dictionaries
         system_prompt: System prompt to use
         device: Device to run on
+        include_persona: Whether to include persona in prompts
         max_new_tokens: Max tokens to generate
         temperature: Sampling temperature
         top_p: Nucleus sampling parameter
+        batch_size: Batch size for generation
 
     Returns:
         Dictionary of metrics
@@ -203,6 +207,7 @@ def evaluate_with_generation(
 
     for dialogue in tqdm(dialogues, desc="Evaluating"):
         messages = dialogue["messages"]
+        character = dialogue.get("character", None)
 
         # Find last assistant message to predict
         for i in range(len(messages) - 1, -1, -1):
@@ -211,18 +216,12 @@ def evaluate_with_generation(
                 context_messages = messages[:i]
 
                 # Format for generation
-                formatted_messages = []
-                if system_prompt:
-                    formatted_messages.append({
-                        "role": "system",
-                        "content": system_prompt
-                    })
-
-                for msg in context_messages:
-                    formatted_messages.append({
-                        "role": msg["role"],
-                        "content": msg["text"]
-                    })
+                formatted_messages = format_chat_messages(
+                    context_messages,
+                    system_prompt,
+                    include_persona,
+                    character
+                )
 
                 # Generate
                 prompt = tokenizer.apply_chat_template(
@@ -260,8 +259,8 @@ def evaluate_with_generation(
     # 1. Embedding similarity
     print("  - Computing embedding similarity...")
     embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-    pred_embeddings = embedding_model.encode(predictions)
-    ref_embeddings = embedding_model.encode(references)
+    pred_embeddings = embedding_model.encode(predictions, show_progress_bar=True)
+    ref_embeddings = embedding_model.encode(references, show_progress_bar=True)
 
     similarities = []
     for pred_emb, ref_emb in zip(pred_embeddings, ref_embeddings):
@@ -315,23 +314,23 @@ def evaluate_with_generation(
     return metrics
 
 
-def train_lora_for_persona(
-    persona_id: str,
+def train_unified_lora(
     config: dict,
-    output_dir: Path = None,
+    output_dir: Path,
+    include_persona: bool = True,
     use_val: bool = True
 ):
     """
-    Train a LoRA adapter for a specific persona.
+    Train a unified LoRA adapter on all training data.
 
     Args:
-        persona_id: The persona to train for
         config: Training configuration
         output_dir: Directory to save the trained adapter
+        include_persona: Whether to include persona descriptions in prompts
         use_val: Whether to use validation set for evaluation
     """
     print(f"\n{'='*60}")
-    print(f"Training LoRA for Persona: {persona_id}")
+    print(f"Training Unified LoRA on All Training Data")
     print(f"{'='*60}\n")
 
     # Set device
@@ -350,7 +349,7 @@ def train_lora_for_persona(
 
     base_model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        dtype=torch.float16 if device == "cuda" else torch.float32,
+        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
         device_map="auto" if device == "cuda" else None
     )
 
@@ -374,40 +373,42 @@ def train_lora_for_persona(
     model = get_peft_model(base_model, lora_config)
     model.print_trainable_parameters()
 
-    # Load data - use 80% for training (train + val) and 20% for eval (test)
-    print(f"\nLoading training data for persona {persona_id}...")
+    # Load data
+    print(f"\nLoading training data from all personas...")
     data_path = Path(config["data_path"])
     splits_path = Path(config.get("splits_path", "data/splits/edgesplits.json"))
 
-    # Load train split (60% of data - 30 dialogues)
-    train_dialogues = load_persona_data(data_path, splits_path, persona_id, "train")
-    print(f"[OK] Loaded {len(train_dialogues)} train dialogues")
+    train_dialogues = load_all_split_data(data_path, splits_path, "train")
+    print(f"[OK] Loaded {len(train_dialogues)} training dialogues from all personas")
 
-    # Load val split (20% of data - 10 dialogues) and add to training
-    val_dialogues = load_persona_data(data_path, splits_path, persona_id, "val")
-    print(f"[OK] Loaded {len(val_dialogues)} val dialogues (adding to training set)")
-
-    # Combine train + val for training (80% total - 40 dialogues)
-    train_dialogues.extend(val_dialogues)
-    print(f"[OK] Combined training set: {len(train_dialogues)} dialogues (80% of data)")
-
-    # Load test split for evaluation (20% of data - 10 dialogues)
-    eval_dialogues = None
     if use_val:
-        eval_dialogues = load_persona_data(data_path, splits_path, persona_id, "test")
-        print(f"[OK] Loaded {len(eval_dialogues)} test dialogues for evaluation (20% of data)")
+        val_dialogues = load_all_split_data(data_path, splits_path, "val")
+        print(f"[OK] Loaded {len(val_dialogues)} validation dialogues from all personas")
 
     # Create training examples
     system_prompt = "You are a helpful and personalized smart home assistant."
 
-    train_texts = create_training_examples(train_dialogues, tokenizer,
-                                          config["max_length"], system_prompt)
+    print(f"\nCreating training examples...")
+    train_texts = create_training_examples(
+        train_dialogues,
+        tokenizer,
+        config["max_length"],
+        system_prompt,
+        include_persona
+    )
     train_dataset = Dataset.from_dict({"text": train_texts})
+    print(f"[OK] Created {len(train_texts)} training examples")
 
-    if use_val and eval_dialogues:
-        val_texts = create_training_examples(eval_dialogues, tokenizer,
-                                            config["max_length"], system_prompt)
+    if use_val:
+        val_texts = create_training_examples(
+            val_dialogues,
+            tokenizer,
+            config["max_length"],
+            system_prompt,
+            include_persona
+        )
         val_dataset = Dataset.from_dict({"text": val_texts})
+        print(f"[OK] Created {len(val_texts)} validation examples")
 
     # Tokenize datasets
     print(f"\nTokenizing datasets...")
@@ -429,8 +430,6 @@ def train_lora_for_persona(
         print(f"[OK] Validation examples: {len(val_dataset)}")
 
     # Setup output directory
-    if output_dir is None:
-        output_dir = Path(config["output_dir"]) / persona_id
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -476,7 +475,9 @@ def train_lora_for_persona(
     )
 
     # Train
-    print(f"\nStarting training...")
+    print(f"\n{'='*60}")
+    print(f"Starting training...")
+    print(f"{'='*60}\n")
     train_result = trainer.train()
 
     # Save final model
@@ -489,9 +490,18 @@ def train_lora_for_persona(
     trainer.log_metrics("train", metrics)
     trainer.save_metrics("train", metrics)
 
-    # Save config
+    # Save config with additional info
+    config_to_save = config.copy()
+    config_to_save["training_info"] = {
+        "num_train_dialogues": len(train_dialogues),
+        "num_train_examples": len(train_dataset),
+        "num_val_dialogues": len(val_dialogues) if use_val else 0,
+        "num_val_examples": len(val_dataset) if use_val else 0,
+        "include_persona": include_persona
+    }
+
     with open(output_dir / "training_config.json", "w") as f:
-        json.dump(config, f, indent=2)
+        json.dump(config_to_save, f, indent=2)
 
     print(f"\n[OK] Training complete!")
     print(f"[OK] LoRA adapter saved to: {output_dir}")
@@ -508,6 +518,7 @@ def train_lora_for_persona(
             dialogues=val_dialogues,
             system_prompt=system_prompt,
             device=device,
+            include_persona=include_persona,
             max_new_tokens=config["generation"].get("max_new_tokens", 256),
             temperature=config["generation"].get("temperature", 0.7),
             top_p=config["generation"].get("top_p", 0.9)
@@ -527,8 +538,8 @@ def train_lora_for_persona(
     print(f"TEST SET EVALUATION")
     print(f"{'='*60}")
 
-    test_dialogues = load_persona_data(data_path, splits_path, persona_id, "test")
-    print(f"[OK] Loaded {len(test_dialogues)} test dialogues")
+    test_dialogues = load_all_split_data(data_path, splits_path, "test")
+    print(f"[OK] Loaded {len(test_dialogues)} test dialogues from all personas")
 
     test_metrics = evaluate_with_generation(
         model=model,
@@ -536,6 +547,7 @@ def train_lora_for_persona(
         dialogues=test_dialogues,
         system_prompt=system_prompt,
         device=device,
+        include_persona=include_persona,
         max_new_tokens=config["generation"].get("max_new_tokens", 256),
         temperature=config["generation"].get("temperature", 0.7),
         top_p=config["generation"].get("top_p", 0.9)
@@ -550,16 +562,12 @@ def train_lora_for_persona(
         json.dump(test_metrics, f, indent=2)
     print(f"\n[OK] Test metrics saved to {output_dir / 'test_metrics.json'}")
 
-    return output_dir
+    return output_dir, test_metrics
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Train LoRA adapter for a specific persona")
-    parser.add_argument(
-        "--persona_id",
-        type=str,
-        required=True,
-        help="Persona ID to train for (e.g., 'persona_001')"
+    parser = argparse.ArgumentParser(
+        description="Train unified LoRA adapter on all training data"
     )
     parser.add_argument(
         "--config",
@@ -570,8 +578,13 @@ def main():
     parser.add_argument(
         "--output_dir",
         type=str,
-        default=None,
-        help="Output directory (default: models/lora_adapters/{persona_id})"
+        default="models/lora_unified",
+        help="Output directory for trained adapter"
+    )
+    parser.add_argument(
+        "--no_persona",
+        action="store_true",
+        help="Don't include persona descriptions in prompts"
     )
     parser.add_argument(
         "--no_val",
@@ -585,10 +598,10 @@ def main():
     config = load_config(Path(args.config))
 
     # Train
-    output_dir = train_lora_for_persona(
-        persona_id=args.persona_id,
+    output_dir, test_metrics = train_unified_lora(
         config=config,
-        output_dir=Path(args.output_dir) if args.output_dir else None,
+        output_dir=Path(args.output_dir),
+        include_persona=not args.no_persona,
         use_val=not args.no_val
     )
 
@@ -596,6 +609,13 @@ def main():
     print("TRAINING COMPLETE")
     print(f"{'='*60}")
     print(f"Adapter saved to: {output_dir}")
+    print(f"\nFinal Test Metrics:")
+    print(f"  Embedding Similarity: {test_metrics['embedding_similarity']:.4f}")
+    print(f"  Device Precision:     {test_metrics['device_precision']:.4f}")
+    print(f"  Device Recall:        {test_metrics['device_recall']:.4f}")
+    print(f"  Param Precision:      {test_metrics['param_precision']:.4f}")
+    print(f"  Param Recall:         {test_metrics['param_recall']:.4f}")
+    print(f"  Numerical Precision:  {test_metrics['numerical_precision']:.4f}")
 
 
 if __name__ == "__main__":
