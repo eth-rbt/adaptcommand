@@ -41,15 +41,67 @@
     "seed": 42
   },
   "metrics": {
-    "embedding_similarity": 0.6236934065818787,
-    "device_precision": 0.8526666666666668,
-    "device_recall": 0.8606666666666666,
-    "param_precision": 0.8245357142857143,
-    "param_recall": 0.7990821428571429,
-    "param_f1": 0.7987544566544565,
-    "avg_pred_length": 21.573,
-    "avg_ref_length": 13.863,
-    "length_ratio": 1.5561566760441463
+    "embedding_similarity": 0.6378936767578125,
+    "device_precision": 0.7853913971248876,
+    "device_recall": 0.791413971248877,
+    "param_precision": 0.7470338371197535,
+    "param_recall": 0.7144261006289307,
+    "param_f1": 0.7169836237811307,
+    "numerical_tp_total": 1338,
+    "numerical_fp_total": 650,
+    "numerical_fn_total": 982,
+    "numerical_precision": 0.2020496406109614,
+    "numerical_recall": 0.20760332434860734,
+    "numerical_f1": 0.20185871518418685,
+    "numerical_mae": 27.931818181818183,
+    "categorical_tp_total": 3004,
+    "categorical_fp_total": 615,
+    "categorical_fn_total": 1578,
+    "categorical_precision": 0.38618879155435765,
+    "categorical_recall": 0.37462095687331537,
+    "categorical_f1": 0.37415046207162106,
+    "device_tp": 3292,
+    "device_fp": 656,
+    "device_tn": 24645,
+    "device_fn": 1087,
+    "device_precision_from_confusion": 0.8338399189463019,
+    "device_recall_from_confusion": 0.7517698104590089,
+    "device_accuracy": 0.9412735849056604,
+    "device_f1": 0.790680917497298,
+    "device_breakdown": {
+      "tp": {
+        "tv": 156,
+        "ac": 552,
+        "lights": 940,
+        "speaker": 591,
+        "security": 1053
+      },
+      "fp": {
+        "tv": 54,
+        "ac": 200,
+        "lights": 163,
+        "speaker": 60,
+        "security": 179
+      },
+      "tn": {
+        "tv": 5448,
+        "ac": 5022,
+        "lights": 4613,
+        "speaker": 5061,
+        "security": 4501
+      },
+      "fn": {
+        "tv": 278,
+        "ac": 162,
+        "lights": 220,
+        "speaker": 224,
+        "security": 203
+      }
+    },
+    "avg_pred_length": 23.49309299191375,
+    "avg_ref_length": 13.997304582210242,
+    "length_ratio": 1.6784012131715773
   },
-  "num_examples": 2000
+  "num_examples": 5936,
+  "num_personas": 200
 }
