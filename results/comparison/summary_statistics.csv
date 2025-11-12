@@ -1,0 +1,9 @@
+Metric,Baseline Mean,Baseline Std,Personalized Mean,Personalized Std,Improvement (%),Unified Mean,Unified Std,Unified Improvement (%)
+Embedding Similarity,0.6364,0.0524,0.6828,0.0775,+7.30%,0.8185,0.0457,+28.62%
+Device Precision,0.7868,0.0823,0.9073,0.0995,+15.31%,0.9396,0.0473,+19.43%
+Device Recall,0.7937,0.0832,0.9045,0.1001,+13.97%,0.9367,0.0485,+18.03%
+Param Precision,0.7475,0.0844,0.8822,0.1010,+18.02%,0.9075,0.0561,+21.40%
+Param Recall,0.7145,0.0862,0.8559,0.1113,+19.79%,0.9043,0.0593,+26.56%
+Param F1,0.7170,0.0841,0.8588,0.1041,+19.78%,0.8972,0.0580,+25.14%
+Numerical Precision,0.2089,0.0988,0.1951,0.1459,-6.61%,0.3009,0.1072,+44.07%
+Numerical Recall,0.2147,0.0997,0.1963,0.1475,-8.57%,0.3000,0.1069,+39.71%
