@@ -318,7 +318,7 @@ def train_persona_on_unified(
         r=persona_lora_rank,  # Smaller rank for persona-specific adapter
         lora_alpha=persona_lora_rank * 2,  # Keep alpha = 2*r ratio
         target_modules=config["lora_config"]["target_modules"],
-        lora_dropout=0.2,  # Higher dropout for small data
+        lora_dropout=0.3,  # High dropout to prevent overfitting on small data
         bias="none",
         task_type=TaskType.CAUSAL_LM
     )
@@ -389,14 +389,14 @@ def train_persona_on_unified(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Training arguments - adjusted for small adapter on top of pretrained model
+    # Training arguments - very gentle fine-tuning to preserve unified performance
     training_args = TrainingArguments(
         output_dir=str(output_dir),
-        num_train_epochs=5,  # Fewer epochs since we start from unified
+        num_train_epochs=2,  # Very few epochs to avoid degrading unified model
         per_device_train_batch_size=1,
         per_device_eval_batch_size=1,
         gradient_accumulation_steps=4,
-        learning_rate=1e-4,  # Lower learning rate for fine-tuning
+        learning_rate=1e-5,  # Very low learning rate to preserve unified knowledge
         weight_decay=0.01,
         warmup_ratio=0.1,
         logging_dir=str(output_dir / "logs"),
