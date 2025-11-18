@@ -1,0 +1,14 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading tokenizer...
+Loading base model...
+Loading LoRA adapter from models/lora_unified...
+
+Loading test data...
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 10000 examples [00:00, 148459.90 examples/s]
+Traceback (most recent call last):
+  File "C:\Users\Ethan\code\adaptcommand\scripts\analyze_numerical_errors_detailed.py", line 251, in <module>
+    main()
+  File "C:\Users\Ethan\code\adaptcommand\scripts\analyze_numerical_errors_detailed.py", line 98, in main
+    test_indices = splits["test"]
+                   ~~~~~~^^^^^^^^
+KeyError: 'test'
