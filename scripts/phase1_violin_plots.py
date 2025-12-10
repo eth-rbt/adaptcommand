@@ -21,32 +21,35 @@ def load_results():
 
     data = []
 
-    # 1. Unified LoRA - single score replicated
-    unified_path = results_dir / "unified" / "unified_results.json"
-    if unified_path.exists():
-        with open(unified_path) as f:
-            unified = json.load(f)
-            # Replicate the single score to show as a point
-            data.append({
-                'method': 'Unified LoRA',
-                'embedding_similarity': unified['metrics']['embedding_similarity'],
-                'device_precision': unified['metrics']['device_precision'],
-                'param_precision': unified['metrics']['param_precision'],
-                'numerical_precision': unified['metrics']['numerical_precision']
-            })
+    # 1. Unified LoRA - per-persona results
+    unified_per_persona_path = results_dir / "unified" / "per_persona_results.json"
+    if unified_per_persona_path.exists():
+        with open(unified_per_persona_path) as f:
+            unified_per_persona = json.load(f)
+            for persona_id, persona_data in unified_per_persona.items():
+                metrics = persona_data['metrics']
+                data.append({
+                    'method': 'Unified LoRA',
+                    'embedding_similarity': metrics['embedding_similarity'],
+                    'device_precision': metrics['device_precision'],
+                    'param_precision': metrics['param_precision'],
+                    'numerical_precision': metrics['numerical_precision']
+                })
 
-    # 2. Baseline (no adaptation) - single score
-    baseline_path = results_dir / "baseline" / "baseline_results.json"
-    if baseline_path.exists():
-        with open(baseline_path) as f:
-            baseline = json.load(f)
-            data.append({
-                'method': 'Baseline\n(No Adaptation)',
-                'embedding_similarity': baseline['metrics']['embedding_similarity'],
-                'device_precision': baseline['metrics']['device_precision'],
-                'param_precision': baseline['metrics']['param_precision'],
-                'numerical_precision': baseline['metrics']['numerical_precision']
-            })
+    # 2. Baseline (no adaptation) - per-persona results
+    baseline_per_persona_path = results_dir / "baseline" / "per_persona_results.json"
+    if baseline_per_persona_path.exists():
+        with open(baseline_per_persona_path) as f:
+            baseline_per_persona = json.load(f)
+            for persona_id, persona_data in baseline_per_persona.items():
+                metrics = persona_data['metrics']
+                data.append({
+                    'method': 'Baseline\n(No Adaptation)',
+                    'embedding_similarity': metrics['embedding_similarity'],
+                    'device_precision': metrics['device_precision'],
+                    'param_precision': metrics['param_precision'],
+                    'numerical_precision': metrics['numerical_precision']
+                })
 
     # 3. Per-Persona LoRA - per-persona distributions
     personalized_path = results_dir / "personalized" / "personalized_summary.json"
@@ -174,19 +177,6 @@ def create_violin_plots(df):
         # Style mean lines
         parts['cmeans'].set_color('black')
         parts['cmeans'].set_linewidth(2)
-
-        # Add scatter points for methods with single values (Unified, Baseline)
-        for i, method in enumerate(available_methods):
-            method_data = plot_df[plot_df['method'] == method][metric_col]
-            if len(method_data) == 1:
-                # Single point - make it prominent
-                ax.scatter([i], method_data, color=colors.get(method, '#95a5a6'),
-                          s=200, zorder=3, edgecolors='black', linewidth=2, marker='D')
-            elif len(method_data) <= 100:
-                # Small sample - add jittered points
-                jitter = np.random.normal(0, 0.04, size=len(method_data))
-                ax.scatter([i]*len(method_data) + jitter, method_data,
-                          alpha=0.3, s=20, color=colors.get(method, '#95a5a6'))
 
         # Add mean value annotations
         for i, method in enumerate(available_methods):

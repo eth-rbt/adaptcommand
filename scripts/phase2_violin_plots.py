@@ -21,19 +21,19 @@ def load_results():
 
     data = []
 
-    # 1. Unified LoRA - baseline for comparison
-    unified_path = results_dir / "unified" / "unified_results.json"
-    if unified_path.exists():
-        with open(unified_path) as f:
-            unified = json.load(f)
-            # Replicate the single score for all 200 personas to show as baseline
-            for i in range(200):
+    # 1. Unified LoRA - baseline for comparison (per-persona results)
+    unified_per_persona_path = results_dir / "unified" / "per_persona_results.json"
+    if unified_per_persona_path.exists():
+        with open(unified_per_persona_path) as f:
+            unified_per_persona = json.load(f)
+            for persona_id, persona_data in unified_per_persona.items():
+                metrics = persona_data['metrics']
                 data.append({
                     'method': 'Unified LoRA\n(Baseline)',
-                    'embedding_similarity': unified['metrics']['embedding_similarity'],
-                    'device_precision': unified['metrics']['device_precision'],
-                    'param_precision': unified['metrics']['param_precision'],
-                    'numerical_precision': unified['metrics']['numerical_precision']
+                    'embedding_similarity': metrics['embedding_similarity'],
+                    'device_precision': metrics['device_precision'],
+                    'param_precision': metrics['param_precision'],
+                    'numerical_precision': metrics['numerical_precision']
                 })
 
     # 2. Hybrid LoRA - cluster + persona training
