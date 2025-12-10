@@ -1,0 +1,7 @@
+{
+  "cluster_id": 4,
+  "embedding_similarity": 0.6700489256065338,
+  "embedding_similarity_std": 0.2010822157289771,
+  "num_personas": 72,
+  "num_test_examples": 720
+}

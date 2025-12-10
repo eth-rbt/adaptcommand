@@ -1,0 +1,660 @@
+{
+  "per_persona_results": [
+    {
+      "persona_id": "persona_001",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7240009307861328,
+      "device_precision": 0.8571428571428571,
+      "param_f1": 0.8204081632653061,
+      "numerical_precision": 0.30952380952380953,
+      "num_examples": 42
+    },
+    {
+      "persona_id": "persona_003",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7290662527084351,
+      "device_precision": 0.8867924528301887,
+      "param_f1": 0.8452830188679245,
+      "numerical_precision": 0.33962264150943394,
+      "num_examples": 53
+    },
+    {
+      "persona_id": "persona_005",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7947245836257935,
+      "device_precision": 0.92,
+      "param_f1": 0.8526666666666667,
+      "numerical_precision": 0.44,
+      "num_examples": 50
+    },
+    {
+      "persona_id": "persona_007",
+      "cluster_id": 4,
+      "embedding_similarity": 0.734461784362793,
+      "device_precision": 0.8372093023255814,
+      "param_f1": 0.7879291251384274,
+      "numerical_precision": 0.4186046511627907,
+      "num_examples": 43
+    },
+    {
+      "persona_id": "persona_009",
+      "cluster_id": 4,
+      "embedding_similarity": 0.8133829236030579,
+      "device_precision": 0.7959183673469388,
+      "param_f1": 0.743245869776482,
+      "numerical_precision": 0.2653061224489796,
+      "num_examples": 49
+    },
+    {
+      "persona_id": "persona_010",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7191484570503235,
+      "device_precision": 0.891156462585034,
+      "param_f1": 0.7905733722060253,
+      "numerical_precision": 0.2755102040816326,
+      "num_examples": 49
+    },
+    {
+      "persona_id": "persona_012",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7315027117729187,
+      "device_precision": 0.8125,
+      "param_f1": 0.7956349206349206,
+      "numerical_precision": 0.25,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_014",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7138767242431641,
+      "device_precision": 0.7,
+      "param_f1": 0.651809523809524,
+      "numerical_precision": 0.14,
+      "num_examples": 50
+    },
+    {
+      "persona_id": "persona_018",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7585046291351318,
+      "device_precision": 0.7916666666666666,
+      "param_f1": 0.7486111111111112,
+      "numerical_precision": 0.3333333333333333,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_028",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7406843900680542,
+      "device_precision": 0.8048780487804879,
+      "param_f1": 0.7428571428571428,
+      "numerical_precision": 0.23170731707317074,
+      "num_examples": 41
+    },
+    {
+      "persona_id": "persona_031",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7289108633995056,
+      "device_precision": 0.7872340425531915,
+      "param_f1": 0.734143870314083,
+      "numerical_precision": 0.3617021276595745,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_035",
+      "cluster_id": 4,
+      "embedding_similarity": 0.6853294968605042,
+      "device_precision": 0.8653846153846154,
+      "param_f1": 0.8294871794871796,
+      "numerical_precision": 0.25,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_037",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7326329350471497,
+      "device_precision": 0.7906976744186046,
+      "param_f1": 0.7434108527131783,
+      "numerical_precision": 0.36046511627906974,
+      "num_examples": 43
+    },
+    {
+      "persona_id": "persona_038",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7253461480140686,
+      "device_precision": 0.7333333333333333,
+      "param_f1": 0.7079365079365079,
+      "numerical_precision": 0.3111111111111111,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_041",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7863260507583618,
+      "device_precision": 0.8775510204081632,
+      "param_f1": 0.792517006802721,
+      "numerical_precision": 0.30612244897959184,
+      "num_examples": 49
+    },
+    {
+      "persona_id": "persona_043",
+      "cluster_id": 4,
+      "embedding_similarity": 0.8402439951896667,
+      "device_precision": 0.9454545454545454,
+      "param_f1": 0.8755844155844156,
+      "numerical_precision": 0.2636363636363636,
+      "num_examples": 55
+    },
+    {
+      "persona_id": "persona_045",
+      "cluster_id": 4,
+      "embedding_similarity": 0.771844744682312,
+      "device_precision": 0.9111111111111111,
+      "param_f1": 0.8925925925925925,
+      "numerical_precision": 0.2777777777777778,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_046",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7437500953674316,
+      "device_precision": 0.8235294117647058,
+      "param_f1": 0.8013071895424837,
+      "numerical_precision": 0.30392156862745096,
+      "num_examples": 51
+    },
+    {
+      "persona_id": "persona_048",
+      "cluster_id": 4,
+      "embedding_similarity": 0.6967405080795288,
+      "device_precision": 0.7872340425531915,
+      "param_f1": 0.7698074974670719,
+      "numerical_precision": 0.40425531914893614,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_051",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7242298722267151,
+      "device_precision": 0.7444444444444445,
+      "param_f1": 0.7237037037037036,
+      "numerical_precision": 0.25925925925925924,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_053",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7334766983985901,
+      "device_precision": 0.7346938775510204,
+      "param_f1": 0.6952380952380952,
+      "numerical_precision": 0.14285714285714285,
+      "num_examples": 49
+    },
+    {
+      "persona_id": "persona_057",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7856858968734741,
+      "device_precision": 0.8043478260869565,
+      "param_f1": 0.7318840579710144,
+      "numerical_precision": 0.17391304347826086,
+      "num_examples": 46
+    },
+    {
+      "persona_id": "persona_061",
+      "cluster_id": 4,
+      "embedding_similarity": 0.8174707293510437,
+      "device_precision": 0.6956521739130435,
+      "param_f1": 0.6574440052700922,
+      "numerical_precision": 0.31521739130434784,
+      "num_examples": 46
+    },
+    {
+      "persona_id": "persona_063",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7276750206947327,
+      "device_precision": 0.7555555555555555,
+      "param_f1": 0.7088888888888889,
+      "numerical_precision": 0.32222222222222224,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_065",
+      "cluster_id": 4,
+      "embedding_similarity": 0.69914311170578,
+      "device_precision": 0.7777777777777778,
+      "param_f1": 0.7679012345679013,
+      "numerical_precision": 0.19444444444444445,
+      "num_examples": 54
+    },
+    {
+      "persona_id": "persona_070",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7227234840393066,
+      "device_precision": 0.6530612244897959,
+      "param_f1": 0.6062196307094266,
+      "numerical_precision": 0.24489795918367346,
+      "num_examples": 49
+    },
+    {
+      "persona_id": "persona_072",
+      "cluster_id": 4,
+      "embedding_similarity": 0.6351476907730103,
+      "device_precision": 0.7435897435897436,
+      "param_f1": 0.6894993894993895,
+      "numerical_precision": 0.1794871794871795,
+      "num_examples": 39
+    },
+    {
+      "persona_id": "persona_081",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7437824010848999,
+      "device_precision": 0.8235294117647058,
+      "param_f1": 0.7366013071895424,
+      "numerical_precision": 0.27450980392156865,
+      "num_examples": 51
+    },
+    {
+      "persona_id": "persona_083",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7324202060699463,
+      "device_precision": 0.7222222222222222,
+      "param_f1": 0.6683421516754849,
+      "numerical_precision": 0.17592592592592593,
+      "num_examples": 54
+    },
+    {
+      "persona_id": "persona_087",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7655296921730042,
+      "device_precision": 0.803921568627451,
+      "param_f1": 0.7647058823529411,
+      "numerical_precision": 0.27450980392156865,
+      "num_examples": 51
+    },
+    {
+      "persona_id": "persona_089",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7197358012199402,
+      "device_precision": 0.6744186046511628,
+      "param_f1": 0.6589147286821705,
+      "numerical_precision": 0.09302325581395349,
+      "num_examples": 43
+    },
+    {
+      "persona_id": "persona_092",
+      "cluster_id": 4,
+      "embedding_similarity": 0.8024576306343079,
+      "device_precision": 0.7948717948717948,
+      "param_f1": 0.7598290598290598,
+      "numerical_precision": 0.358974358974359,
+      "num_examples": 39
+    },
+    {
+      "persona_id": "persona_094",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7758657336235046,
+      "device_precision": 0.78,
+      "param_f1": 0.7119999999999999,
+      "numerical_precision": 0.21,
+      "num_examples": 50
+    },
+    {
+      "persona_id": "persona_097",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7517334818840027,
+      "device_precision": 0.7142857142857143,
+      "param_f1": 0.6481292517006801,
+      "numerical_precision": 0.1875,
+      "num_examples": 56
+    },
+    {
+      "persona_id": "persona_099",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7176891565322876,
+      "device_precision": 0.7777777777777778,
+      "param_f1": 0.7103703703703703,
+      "numerical_precision": 0.2,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_101",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7641466856002808,
+      "device_precision": 0.9038461538461539,
+      "param_f1": 0.8711538461538463,
+      "numerical_precision": 0.28846153846153844,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_103",
+      "cluster_id": 4,
+      "embedding_similarity": 0.683260977268219,
+      "device_precision": 0.74,
+      "param_f1": 0.6679999999999999,
+      "numerical_precision": 0.16,
+      "num_examples": 50
+    },
+    {
+      "persona_id": "persona_105",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7249715924263,
+      "device_precision": 0.7555555555555555,
+      "param_f1": 0.6844444444444444,
+      "numerical_precision": 0.26666666666666666,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_107",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7156345248222351,
+      "device_precision": 0.7368421052631579,
+      "param_f1": 0.6394736842105262,
+      "numerical_precision": 0.18421052631578946,
+      "num_examples": 38
+    },
+    {
+      "persona_id": "persona_109",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7384214401245117,
+      "device_precision": 0.7906976744186046,
+      "param_f1": 0.7152823920265781,
+      "numerical_precision": 0.3023255813953488,
+      "num_examples": 43
+    },
+    {
+      "persona_id": "persona_111",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7975344061851501,
+      "device_precision": 0.8392857142857143,
+      "param_f1": 0.8006802721088435,
+      "numerical_precision": 0.23214285714285715,
+      "num_examples": 56
+    },
+    {
+      "persona_id": "persona_113",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7719019055366516,
+      "device_precision": 0.7291666666666666,
+      "param_f1": 0.6784722222222221,
+      "numerical_precision": 0.28125,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_115",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7036570906639099,
+      "device_precision": 0.6923076923076923,
+      "param_f1": 0.5919413919413918,
+      "numerical_precision": 0.27884615384615385,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_117",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7210578918457031,
+      "device_precision": 0.75,
+      "param_f1": 0.7041666666666666,
+      "numerical_precision": 0.14583333333333334,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_119",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7523815631866455,
+      "device_precision": 0.8269230769230769,
+      "param_f1": 0.7641025641025639,
+      "numerical_precision": 0.3269230769230769,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_123",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7462986707687378,
+      "device_precision": 0.7872340425531915,
+      "param_f1": 0.7340425531914894,
+      "numerical_precision": 0.2765957446808511,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_125",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7496832609176636,
+      "device_precision": 0.7547169811320755,
+      "param_f1": 0.7268643306379156,
+      "numerical_precision": 0.18867924528301888,
+      "num_examples": 53
+    },
+    {
+      "persona_id": "persona_129",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7591618895530701,
+      "device_precision": 0.8636363636363636,
+      "param_f1": 0.8439393939393939,
+      "numerical_precision": 0.3522727272727273,
+      "num_examples": 44
+    },
+    {
+      "persona_id": "persona_130",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7152960896492004,
+      "device_precision": 0.7872340425531915,
+      "param_f1": 0.7586626139817629,
+      "numerical_precision": 0.1595744680851064,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_132",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7389885783195496,
+      "device_precision": 0.7446808510638298,
+      "param_f1": 0.7219858156028368,
+      "numerical_precision": 0.20212765957446807,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_134",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7065187692642212,
+      "device_precision": 0.7403846153846154,
+      "param_f1": 0.6786630036630037,
+      "numerical_precision": 0.1346153846153846,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_136",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7296690940856934,
+      "device_precision": 0.7708333333333334,
+      "param_f1": 0.6866071428571429,
+      "numerical_precision": 0.21875,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_139",
+      "cluster_id": 4,
+      "embedding_similarity": 0.6985476016998291,
+      "device_precision": 0.8421052631578947,
+      "param_f1": 0.7647451963241436,
+      "numerical_precision": 0.22807017543859648,
+      "num_examples": 57
+    },
+    {
+      "persona_id": "persona_143",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7760795950889587,
+      "device_precision": 0.803921568627451,
+      "param_f1": 0.7405228758169933,
+      "numerical_precision": 0.3333333333333333,
+      "num_examples": 51
+    },
+    {
+      "persona_id": "persona_145",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7582443356513977,
+      "device_precision": 0.84,
+      "param_f1": 0.7891428571428571,
+      "numerical_precision": 0.21,
+      "num_examples": 50
+    },
+    {
+      "persona_id": "persona_153",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7091062068939209,
+      "device_precision": 0.7444444444444445,
+      "param_f1": 0.6803174603174603,
+      "numerical_precision": 0.23333333333333334,
+      "num_examples": 45
+    },
+    {
+      "persona_id": "persona_157",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7523026466369629,
+      "device_precision": 0.6736111111111112,
+      "param_f1": 0.6099867724867725,
+      "numerical_precision": 0.25,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_159",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7421581745147705,
+      "device_precision": 0.8717948717948718,
+      "param_f1": 0.7946275946275947,
+      "numerical_precision": 0.34615384615384615,
+      "num_examples": 39
+    },
+    {
+      "persona_id": "persona_161",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7500126957893372,
+      "device_precision": 0.8229166666666666,
+      "param_f1": 0.775,
+      "numerical_precision": 0.2604166666666667,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_164",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7945838570594788,
+      "device_precision": 0.7978723404255319,
+      "param_f1": 0.7466058763931103,
+      "numerical_precision": 0.2872340425531915,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_168",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7063422799110413,
+      "device_precision": 0.7391304347826086,
+      "param_f1": 0.7038208168642951,
+      "numerical_precision": 0.3079710144927536,
+      "num_examples": 46
+    },
+    {
+      "persona_id": "persona_169",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7403973340988159,
+      "device_precision": 0.8571428571428571,
+      "param_f1": 0.8007936507936508,
+      "numerical_precision": 0.2261904761904762,
+      "num_examples": 42
+    },
+    {
+      "persona_id": "persona_177",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7627739310264587,
+      "device_precision": 0.7391304347826086,
+      "param_f1": 0.7061594202898551,
+      "numerical_precision": 0.30434782608695654,
+      "num_examples": 46
+    },
+    {
+      "persona_id": "persona_179",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7119689583778381,
+      "device_precision": 0.7916666666666666,
+      "param_f1": 0.7444444444444444,
+      "numerical_precision": 0.2708333333333333,
+      "num_examples": 48
+    },
+    {
+      "persona_id": "persona_182",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7803050875663757,
+      "device_precision": 0.8604651162790697,
+      "param_f1": 0.812956810631229,
+      "numerical_precision": 0.22093023255813954,
+      "num_examples": 43
+    },
+    {
+      "persona_id": "persona_184",
+      "cluster_id": 4,
+      "embedding_similarity": 0.655158519744873,
+      "device_precision": 0.6086956521739131,
+      "param_f1": 0.5405797101449276,
+      "numerical_precision": 0.15217391304347827,
+      "num_examples": 46
+    },
+    {
+      "persona_id": "persona_186",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7187950015068054,
+      "device_precision": 0.7075471698113207,
+      "param_f1": 0.6672955974842767,
+      "numerical_precision": 0.1509433962264151,
+      "num_examples": 53
+    },
+    {
+      "persona_id": "persona_189",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7666568756103516,
+      "device_precision": 0.7613636363636364,
+      "param_f1": 0.7174242424242424,
+      "numerical_precision": 0.26136363636363635,
+      "num_examples": 44
+    },
+    {
+      "persona_id": "persona_191",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7924831509590149,
+      "device_precision": 0.7659574468085106,
+      "param_f1": 0.6950354609929078,
+      "numerical_precision": 0.3191489361702128,
+      "num_examples": 47
+    },
+    {
+      "persona_id": "persona_192",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7587029933929443,
+      "device_precision": 0.8157894736842105,
+      "param_f1": 0.7570175438596491,
+      "numerical_precision": 0.2631578947368421,
+      "num_examples": 38
+    },
+    {
+      "persona_id": "persona_194",
+      "cluster_id": 4,
+      "embedding_similarity": 0.6777576804161072,
+      "device_precision": 0.7211538461538461,
+      "param_f1": 0.691025641025641,
+      "numerical_precision": 0.11538461538461539,
+      "num_examples": 52
+    },
+    {
+      "persona_id": "persona_195",
+      "cluster_id": 4,
+      "embedding_similarity": 0.7814282774925232,
+      "device_precision": 0.7321428571428571,
+      "param_f1": 0.6623299319727891,
+      "numerical_precision": 0.125,
+      "num_examples": 56
+    }
+  ],
+  "summary": {
+    "num_personas": 72,
+    "embedding_similarity_mean": 0.7413560342457559,
+    "embedding_similarity_std": 0.03706128776718694,
+    "device_precision_mean": 0.7851269499890512,
+    "param_f1_mean": 0.7338026670306943,
+    "numerical_precision_mean": 0.2543694908167928
+  }
+}

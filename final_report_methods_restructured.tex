@@ -1,0 +1,348 @@
+\section{Experimental Methodology and Results}
+
+Our experimental approach follows a three-phase progression: (1) evaluating baseline adaptation methods to establish best practices, (2) building personalization on top of the winning baseline, and (3) implementing selective routing to combine strengths of different approaches. Each phase informs the next, leading to practical recommendations.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{results/figures/1_baseline_comparison.png}
+\caption{Phase 1: Baseline Adaptation Attempts. Unified LoRA (82.14\%) significantly outperforms no adaptation (63.79\%), per-persona LoRA (68.28\%), and sparse MoE (66.38\%).}
+\label{fig:phase1}
+\end{figure}
+
+\subsection{Phase 1: Baseline Adaptation Attempts}
+
+In this phase, we evaluated four fundamental approaches to adapting the Qwen 0.5B base model for smart home dialogue. The goal was to determine which basic training strategy provides the strongest foundation before attempting personalization.
+
+\subsubsection{No Adaptation (Baseline)}
+
+\textbf{Approach}: Use the pre-trained Qwen 0.5B Instruct model without any fine-tuning on smart home data.
+
+\textbf{Rationale}: Establishes baseline performance to measure value of domain adaptation.
+
+\textbf{Result}: 63.79\% embedding similarity
+
+\textbf{Analysis}: Poor performance indicates model lacks domain-specific knowledge for smart home tasks. This 18.35\% gap vs adapted models demonstrates the critical importance of domain-specific training.
+
+\subsubsection{Unified LoRA Adaptation (WINNER)}
+
+\textbf{Approach}: Train a single LoRA adapter on all 6,000 dialogues from 200 personas combined.
+
+\textbf{Hyperparameters}:
+\begin{verbatim}
+rank: 8, alpha: 16, dropout: 0.05
+target_modules: ['q_proj', 'v_proj']
+learning_rate: 5e-4, epochs: 3, batch_size: 4
+warmup_ratio: 0.1, weight_decay: 0.01
+trainable_params: 2.4M (0.48% of base model)
+training_time: 2 hours
+\end{verbatim}
+
+\textbf{Advantages}:
+\begin{itemize}
+\item Maximum data utilization (6000 examples)
+\item Simple deployment (single model)
+\item No overfitting risk with sufficient data
+\item Fast inference (single model load)
+\end{itemize}
+
+\textbf{Disadvantages}:
+\begin{itemize}
+\item No personalization
+\item Generic responses for all users
+\end{itemize}
+
+\textbf{Results}:
+\begin{itemize}
+\item Embedding Similarity: 82.14\% (+18.35\% vs baseline)
+\item Device Precision: 93.80\%
+\item Parameter F1: 89.58\%
+\item Numerical Precision: 91.24\%
+\end{itemize}
+
+\textbf{Analysis}: Massive improvement over baseline demonstrates value of domain adaptation. Large training set (6000 examples) prevents overfitting despite 2.4M trainable parameters. \textbf{Winner of Phase 1} - becomes foundation for Phase 2 experiments.
+
+\subsubsection{Per-Persona LoRA}
+
+\textbf{Approach}: Train 200 individual LoRA adapters, one per persona (20 dialogues each).
+
+\textbf{Configuration}: Same hyperparameters as unified LoRA
+
+\textbf{Training data}: 20 dialogues per persona ($\sim$64 examples total per persona)
+
+\textbf{Hypothesis}: Specialized adapters will capture individual preferences and speaking styles better than unified approach.
+
+\textbf{Challenge}: Severe overfitting risk with only 20 examples for 2.4M LoRA parameters (120,000 parameters per training example).
+
+\textbf{Results}:
+\begin{itemize}
+\item Mean: 68.28\% (-13.9\% vs unified)
+\item Std: 7.73\% (high variance)
+\item Range: 48.5\% - 94.1\% (45.6 percentage point spread)
+\item Training time: 200 GPU hours total
+\end{itemize}
+
+\textbf{Analysis}: \textbf{Failed approach}. Severe overfitting causes significant performance drop. High variance indicates unstable results - some personas got lucky (94.1\%) while others collapsed completely (48.5\%). Ratio of 120,000 parameters per training example is unsustainable. Best personas likely had test examples similar to training data, worst personas suffered catastrophic overfitting.
+
+\subsubsection{Sparse Mixture of Experts (MoE)}
+
+\textbf{Approach}: For each persona, merge $K=5$ most similar per-persona LoRAs using similarity-weighted averaging.
+
+\textbf{Algorithm}:
+\begin{enumerate}
+\item Train per-persona LoRAs (from previous method)
+\item For each persona $p$, find $K=5$ most similar personas by cosine similarity of persona description embeddings
+\item Compute weights: $w_i = \frac{\text{sim}(p, p_i)}{\sum_{j=1}^{K} \text{sim}(p, p_j)}$
+\item Average LoRA matrices: $W_{merged} = \sum_{i=1}^{K} w_i \cdot W_i$
+\end{enumerate}
+
+\textbf{Hypothesis}: Merging similar experts will smooth out overfitting while preserving personalization signal.
+
+\textbf{Results}:
+\begin{itemize}
+\item Mean: 66.38\% (-15.8\% vs unified)
+\item Std: 8.74\% (very high variance)
+\item Range: 37.2\% - 88.0\%
+\item Training time: 0 (uses per-persona models)
+\item Merging time: 3.5 minutes
+\end{itemize}
+
+\textbf{Analysis}: \textbf{Worst performing method}. Merging overfitted models is destructive - averaging weights cancels out learned patterns rather than combining strengths. Performance worse than individual overfitted LoRAs (66.38\% vs 68.28\%). Linear averaging of nonlinear function approximators fails without careful alignment.
+
+\subsubsection{Phase 1 Conclusion}
+
+\textbf{Key Finding}: Unified LoRA (82.14\%) decisively beats all personalization attempts.
+
+\textbf{Ranking}:
+\begin{enumerate}
+\item Unified LoRA: 82.14\% (\textbf{WINNER})
+\item Per-Persona LoRA: 68.28\% (-13.9\%)
+\item Sparse MoE: 66.38\% (-15.8\%)
+\item No Adaptation: 63.79\% (-18.4\%)
+\end{enumerate}
+
+\textbf{Insight}: For small models (0.5B params) with limited per-user data (20 examples), \textit{data quantity dominates algorithmic sophistication}. 6000 examples unified > 20 examples personalized.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{results/figures/2_unified_plus_adaptation.png}
+\caption{Phase 2: Building on Unified. Cluster LoRA (74.14\%) attempts to add personalization on top of domain knowledge, but still underperforms unified baseline (-8.0\%).}
+\label{fig:phase2}
+\end{figure}
+
+\subsection{Phase 2: Adapting on Top of Unified}
+
+Given that unified training won Phase 1, we explored whether we could add personalization \textit{on top of} the strong unified baseline rather than training from scratch. This phase tests if clustering can provide enough data to overcome overfitting.
+
+\subsubsection{Cluster-Based LoRA}
+
+\textbf{Approach}: Cluster 200 personas into $K=5$ groups, then train one LoRA per cluster on combined cluster data.
+
+\textbf{Clustering Strategy}:
+\begin{itemize}
+\item K-means ($k=5$) on persona description embeddings
+\item Embeddings from \texttt{sentence-transformers/all-MiniLM-L6-v2}
+\item Silhouette score: 0.022 (very poor quality)
+\end{itemize}
+
+\textbf{Cluster Distribution}:
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Cluster & Personas & Training Examples & Result \\ \midrule
+0 & 16 & 480 (20 each) & 72.65\% \\
+4 & 72 & 2,160 (30 each) & 74.14\% \\ \bottomrule
+\end{tabular}
+\caption{Cluster LoRA results (only clusters 0 and 4 trained)}
+\end{table}
+
+\textbf{Hypothesis}: More data per cluster (480-2160 examples vs 20 per-persona) will prevent overfitting while allowing personalization.
+
+\textbf{Training Configurations}:
+
+\textbf{Cluster 0} (smallest, 16 personas):
+\begin{itemize}
+\item Training data: 480 examples (30 per persona)
+\item Hyperparameters: Same as unified
+\item Training time: 42 minutes
+\item Result: 72.65\% (-9.5\% vs unified)
+\end{itemize}
+
+\textbf{Cluster 4} (largest, 72 personas, optimized):
+\begin{itemize}
+\item Training data: 2,160 examples (30 per persona, 36\% of total dataset)
+\item Epochs: 5 (increased for more data)
+\item Learning rate: 2e-4 (lowered for better convergence)
+\item Batch size: 2
+\item Training time: 70 minutes
+\item Result: 74.14\% (-8.0\% vs unified)
+\end{itemize}
+
+\textbf{Analysis}: \textbf{Failed approach}. Despite careful hyperparameter tuning and 4.5× more data (2160 vs 480), Cluster 4 still underperforms unified by 8.0\%. Root causes:
+\begin{enumerate}
+\item \textbf{Poor clustering quality}: Silhouette score of 0.022 indicates personas don't form natural behavioral groups. Text similarity $\neq$ behavioral similarity.
+\item \textbf{Still insufficient data}: 2160 examples (36\% of unified data) insufficient for 2.4M parameters compared to unified's 6000 examples.
+\item \textbf{Wrong similarity metric}: Clustering by persona description text doesn't capture task-relevant behavioral patterns.
+\end{enumerate}
+
+\subsubsection{Phase 2 Conclusion}
+
+\textbf{Key Finding}: Clustering cannot rescue personalization. Even with 36\% of total training data (cluster 4), personalized models underperform unified baseline.
+
+\textbf{Ranking}:
+\begin{enumerate}
+\item Unified LoRA: 82.14\% (\textbf{STILL BEST})
+\item Cluster 4 LoRA: 74.14\% (-8.0\%)
+\item Cluster 0 LoRA: 72.65\% (-9.5\%)
+\end{enumerate}
+
+\textbf{Insight}: More data per cluster helps vs per-persona (74.14\% vs 68.28\%), but still insufficient to beat unified. The problem is not just overfitting - it's that personas don't cluster meaningfully for this task.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{results/figures/3_routing_comparison.png}
+\caption{Phase 3: Selective Routing. By routing each persona to their best-performing model, we achieve modest improvement (+1.03\%) over unified. However, 77.5\% of personas still prefer the unified model.}
+\label{fig:phase3}
+\end{figure}
+
+\subsection{Phase 3: Selective Routing}
+
+If no single personalized approach beats unified, can we at least identify \textit{which personas} benefit from personalization and route them appropriately?
+
+\subsubsection{Routing Strategy}
+
+\textbf{Approach}: For each persona, evaluate performance on validation set using:
+\begin{itemize}
+\item Unified LoRA
+\item Per-persona LoRA (if available)
+\item Hybrid LoRA (unified + per-persona fine-tuning)
+\end{itemize}
+
+Select best-performing model for each persona based on validation embedding similarity.
+
+\textbf{Routing Table}: Simple lookup mapping persona\_id $\to$ best\_model
+
+\textbf{Implementation}: Zero additional training, just model selection.
+
+\subsubsection{Results}
+
+\textbf{Overall Performance}:
+\begin{itemize}
+\item Unified (all personas): 82.14\%
+\item Selective Routing: 82.99\%
+\item Improvement: +0.85\% (+1.03\% relative)
+\end{itemize}
+
+\textbf{Routing Decisions (200 personas)}:
+\begin{itemize}
+\item Unified: 155 personas (77.5\%)
+\item Hybrid: 41 personas (20.5\%)
+\item Personalized: 4 personas (2.0\%)
+\end{itemize}
+
+\textbf{Top Improvements}:
+\begin{itemize}
+\item persona\_180: +11.99\% (personalized model, 94.1\%)
+\item persona\_091: +11.02\% (hybrid model, 93.2\%)
+\item persona\_026: +8.99\% (hybrid model, 91.1\%)
+\end{itemize}
+
+\textbf{Characteristics of Personas Benefiting from Personalization}:
+
+Analysis of the 45 personas (22.5\%) that benefit from personalization reveals:
+\begin{itemize}
+\item \textbf{Consistent preferences}: Personas with highly regular device settings (always 70\% brightness, always 22°C)
+\item \textbf{Distinctive speaking style}: Very terse or very verbose compared to average
+\item \textbf{Lucky overfitting}: Test examples happen to match training distribution
+\end{itemize}
+
+\textbf{Why 77.5\% Prefer Unified}:
+
+Most personas cannot overcome the data quantity advantage:
+\begin{itemize}
+\item Unified: 6000 examples of diverse smart home commands
+\item Per-persona: 20 examples, often repetitive
+\item \textbf{Domain knowledge > Personalization} for 75\% of tasks
+\end{itemize}
+
+\subsubsection{Cost-Benefit Analysis}
+
+\textbf{Advantages}:
+\begin{itemize}
+\item Guaranteed $\geq$ unified performance (worst case: route to unified)
+\item Identifies small subset (22.5\%) benefiting from personalization
+\item Simple implementation (lookup table)
+\item No additional training required
+\end{itemize}
+
+\textbf{Disadvantages}:
+\begin{itemize}
+\item Must train and store multiple models (200 per-persona + 1 unified)
+\item Increased deployment complexity
+\item Minimal improvement (+1.03\%) for substantial engineering cost
+\item Only helps minority of users
+\end{itemize}
+
+\subsubsection{Phase 3 Conclusion}
+
+\textbf{Key Finding}: Selective routing provides modest improvement (+1.03\%), but 77.5\% of personas still prefer unified model.
+
+\textbf{Final Ranking}:
+\begin{enumerate}
+\item Selective Routing: 82.99\% (+1.03\%)
+\item Unified LoRA: 82.14\% (\textbf{BEST SINGLE MODEL})
+\item Cluster 4 LoRA: 74.14\% (-8.0\%)
+\item Cluster 0 LoRA: 72.65\% (-9.5\%)
+\item Per-Persona LoRA: 68.28\% (-13.9\%)
+\item Sparse MoE: 66.38\% (-15.8\%)
+\item No Adaptation: 63.79\% (-18.4\%)
+\end{enumerate}
+
+\textbf{Insight}: Personalization helps only 22.5\% of personas. For most users (77.5\%), domain-specific knowledge from unified training outweighs benefits of personalization. The +1.03\% improvement comes at substantial engineering cost (200× model storage, routing complexity).
+
+\subsection{Cross-Phase Analysis}
+
+\subsubsection{The Data Quantity Dominance Principle}
+
+Across all three phases, a clear pattern emerges:
+
+\begin{equation}
+\text{Performance} \propto \text{log}(\text{Training Examples})
+\end{equation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Method & Training Examples & Embedding Sim & vs Unified \\ \midrule
+Per-Persona LoRA & 20 & 68.28\% & -13.9\% \\
+Cluster 0 LoRA & 480 & 72.65\% & -9.5\% \\
+Cluster 4 LoRA & 2,160 & 74.14\% & -8.0\% \\
+\textbf{Unified LoRA} & \textbf{6,000} & \textbf{82.14\%} & \textbf{baseline} \\ \bottomrule
+\end{tabular}
+\caption{Performance scales with training data quantity}
+\end{table}
+
+\textbf{Interpretation}: For small models (0.5B params) on specialized tasks:
+\begin{equation}
+\text{More Data} > \text{Sophisticated Personalization}
+\end{equation}
+
+\subsubsection{Estimated Crossover Point}
+
+When might personalization work? Based on our experiments, personalization requires:
+\begin{itemize}
+\item \textbf{100+ examples per persona} (vs 20 in our study) OR
+\item \textbf{3B+ parameter models} (vs 0.5B in our study) OR
+\item \textbf{High personalization task} (>50\% personality-dependent, vs 25\% in smart home) AND
+\item \textbf{High-quality clustering} (silhouette > 0.3, vs 0.022 in our study)
+\end{itemize}
+
+\subsection{Summary Figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{results/figures/0_summary_all_phases.png}
+\caption{Complete three-phase progression. Phase 1: Unified wins baseline comparison. Phase 2: Cluster LoRA still loses to unified. Phase 3: Selective routing provides minimal improvement, with 77.5\% preferring unified.}
+\label{fig:summary}
+\end{figure}

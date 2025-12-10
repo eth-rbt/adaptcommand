@@ -1,0 +1,1011 @@
+{
+  "summary": {
+    "embedding_similarity_mean": 0.6638196131531149,
+    "embedding_similarity_std": 0.08743885194408685,
+    "embedding_similarity_min": 0.37186614274978635,
+    "embedding_similarity_max": 0.8804011553525924,
+    "num_personas": 200
+  },
+  "per_persona_results": {
+    "persona_000": {
+      "embedding_similarity": 0.6472283929586411,
+      "embedding_similarity_std": 0.21524599556961935,
+      "num_test_examples": 10
+    },
+    "persona_001": {
+      "embedding_similarity": 0.6159754797816277,
+      "embedding_similarity_std": 0.24763738151592177,
+      "num_test_examples": 10
+    },
+    "persona_002": {
+      "embedding_similarity": 0.6805122554302215,
+      "embedding_similarity_std": 0.23002599058401152,
+      "num_test_examples": 10
+    },
+    "persona_003": {
+      "embedding_similarity": 0.7211798638105392,
+      "embedding_similarity_std": 0.16282547278191883,
+      "num_test_examples": 10
+    },
+    "persona_004": {
+      "embedding_similarity": 0.7576018214225769,
+      "embedding_similarity_std": 0.16567260264658593,
+      "num_test_examples": 10
+    },
+    "persona_005": {
+      "embedding_similarity": 0.7218590706586838,
+      "embedding_similarity_std": 0.2059828253951375,
+      "num_test_examples": 10
+    },
+    "persona_006": {
+      "embedding_similarity": 0.6627133965492249,
+      "embedding_similarity_std": 0.18001899191255744,
+      "num_test_examples": 10
+    },
+    "persona_007": {
+      "embedding_similarity": 0.5512753605842591,
+      "embedding_similarity_std": 0.1751014115118423,
+      "num_test_examples": 10
+    },
+    "persona_008": {
+      "embedding_similarity": 0.765775591135025,
+      "embedding_similarity_std": 0.20469109967058166,
+      "num_test_examples": 10
+    },
+    "persona_009": {
+      "embedding_similarity": 0.8460521161556244,
+      "embedding_similarity_std": 0.13056410872775448,
+      "num_test_examples": 10
+    },
+    "persona_010": {
+      "embedding_similarity": 0.7481122493743897,
+      "embedding_similarity_std": 0.17811456658024025,
+      "num_test_examples": 10
+    },
+    "persona_011": {
+      "embedding_similarity": 0.5244263961911202,
+      "embedding_similarity_std": 0.23531427041331326,
+      "num_test_examples": 10
+    },
+    "persona_012": {
+      "embedding_similarity": 0.7128606751561165,
+      "embedding_similarity_std": 0.20389304365589236,
+      "num_test_examples": 10
+    },
+    "persona_013": {
+      "embedding_similarity": 0.6926980555057526,
+      "embedding_similarity_std": 0.1490516157627232,
+      "num_test_examples": 10
+    },
+    "persona_014": {
+      "embedding_similarity": 0.5887101635336875,
+      "embedding_similarity_std": 0.266190594767528,
+      "num_test_examples": 10
+    },
+    "persona_015": {
+      "embedding_similarity": 0.6808216810226441,
+      "embedding_similarity_std": 0.22467708340716905,
+      "num_test_examples": 10
+    },
+    "persona_016": {
+      "embedding_similarity": 0.674187833070755,
+      "embedding_similarity_std": 0.15640053061164388,
+      "num_test_examples": 10
+    },
+    "persona_017": {
+      "embedding_similarity": 0.6598200112581253,
+      "embedding_similarity_std": 0.2648541436701578,
+      "num_test_examples": 10
+    },
+    "persona_018": {
+      "embedding_similarity": 0.6630496889352798,
+      "embedding_similarity_std": 0.13758866402737577,
+      "num_test_examples": 10
+    },
+    "persona_019": {
+      "embedding_similarity": 0.6656954377889633,
+      "embedding_similarity_std": 0.1395131928383039,
+      "num_test_examples": 10
+    },
+    "persona_020": {
+      "embedding_similarity": 0.7145974606275558,
+      "embedding_similarity_std": 0.2327474528144807,
+      "num_test_examples": 10
+    },
+    "persona_021": {
+      "embedding_similarity": 0.6161085277795791,
+      "embedding_similarity_std": 0.18790619636766953,
+      "num_test_examples": 10
+    },
+    "persona_022": {
+      "embedding_similarity": 0.5869351178407669,
+      "embedding_similarity_std": 0.27663259693768605,
+      "num_test_examples": 10
+    },
+    "persona_023": {
+      "embedding_similarity": 0.7233842730522155,
+      "embedding_similarity_std": 0.158056011057899,
+      "num_test_examples": 10
+    },
+    "persona_024": {
+      "embedding_similarity": 0.6140950456261635,
+      "embedding_similarity_std": 0.25286907825226135,
+      "num_test_examples": 10
+    },
+    "persona_025": {
+      "embedding_similarity": 0.729231670498848,
+      "embedding_similarity_std": 0.1390529777248339,
+      "num_test_examples": 10
+    },
+    "persona_026": {
+      "embedding_similarity": 0.8281579613685608,
+      "embedding_similarity_std": 0.14887734760702767,
+      "num_test_examples": 10
+    },
+    "persona_027": {
+      "embedding_similarity": 0.5629052758216858,
+      "embedding_similarity_std": 0.12480478271715377,
+      "num_test_examples": 10
+    },
+    "persona_028": {
+      "embedding_similarity": 0.6507833868265152,
+      "embedding_similarity_std": 0.20192467427895683,
+      "num_test_examples": 10
+    },
+    "persona_029": {
+      "embedding_similarity": 0.7626736998558045,
+      "embedding_similarity_std": 0.1719957728796165,
+      "num_test_examples": 10
+    },
+    "persona_030": {
+      "embedding_similarity": 0.601319769024849,
+      "embedding_similarity_std": 0.1524790010088793,
+      "num_test_examples": 10
+    },
+    "persona_031": {
+      "embedding_similarity": 0.6633288323879242,
+      "embedding_similarity_std": 0.14400940181882746,
+      "num_test_examples": 10
+    },
+    "persona_032": {
+      "embedding_similarity": 0.46789413802325724,
+      "embedding_similarity_std": 0.31665285217265454,
+      "num_test_examples": 10
+    },
+    "persona_033": {
+      "embedding_similarity": 0.7007660418748856,
+      "embedding_similarity_std": 0.14889855963739476,
+      "num_test_examples": 10
+    },
+    "persona_034": {
+      "embedding_similarity": 0.7445491790771485,
+      "embedding_similarity_std": 0.1509596268589069,
+      "num_test_examples": 10
+    },
+    "persona_035": {
+      "embedding_similarity": 0.7099532783031464,
+      "embedding_similarity_std": 0.1807082179008958,
+      "num_test_examples": 10
+    },
+    "persona_036": {
+      "embedding_similarity": 0.6452484339475631,
+      "embedding_similarity_std": 0.20519678822540485,
+      "num_test_examples": 10
+    },
+    "persona_037": {
+      "embedding_similarity": 0.7246072858572006,
+      "embedding_similarity_std": 0.21650431080941088,
+      "num_test_examples": 10
+    },
+    "persona_038": {
+      "embedding_similarity": 0.5251092106103897,
+      "embedding_similarity_std": 0.18825417504140346,
+      "num_test_examples": 10
+    },
+    "persona_039": {
+      "embedding_similarity": 0.6359239973127842,
+      "embedding_similarity_std": 0.22066252600517838,
+      "num_test_examples": 10
+    },
+    "persona_040": {
+      "embedding_similarity": 0.850434398651123,
+      "embedding_similarity_std": 0.13286243165192888,
+      "num_test_examples": 10
+    },
+    "persona_041": {
+      "embedding_similarity": 0.745836254954338,
+      "embedding_similarity_std": 0.1393226351393303,
+      "num_test_examples": 10
+    },
+    "persona_042": {
+      "embedding_similarity": 0.6695225656032562,
+      "embedding_similarity_std": 0.0977910530866886,
+      "num_test_examples": 10
+    },
+    "persona_043": {
+      "embedding_similarity": 0.7396465465426445,
+      "embedding_similarity_std": 0.24834879342562519,
+      "num_test_examples": 10
+    },
+    "persona_044": {
+      "embedding_similarity": 0.7440262004733086,
+      "embedding_similarity_std": 0.26907280200564665,
+      "num_test_examples": 10
+    },
+    "persona_045": {
+      "embedding_similarity": 0.6408665537834167,
+      "embedding_similarity_std": 0.2084597935660848,
+      "num_test_examples": 10
+    },
+    "persona_046": {
+      "embedding_similarity": 0.6165097504854202,
+      "embedding_similarity_std": 0.19250644484849075,
+      "num_test_examples": 10
+    },
+    "persona_047": {
+      "embedding_similarity": 0.4578238181769848,
+      "embedding_similarity_std": 0.23358312269496162,
+      "num_test_examples": 10
+    },
+    "persona_048": {
+      "embedding_similarity": 0.6933856576681137,
+      "embedding_similarity_std": 0.17028675936582113,
+      "num_test_examples": 10
+    },
+    "persona_049": {
+      "embedding_similarity": 0.600595760345459,
+      "embedding_similarity_std": 0.17659709792794193,
+      "num_test_examples": 10
+    },
+    "persona_050": {
+      "embedding_similarity": 0.522974619269371,
+      "embedding_similarity_std": 0.3093345489328147,
+      "num_test_examples": 10
+    },
+    "persona_051": {
+      "embedding_similarity": 0.6099255368113518,
+      "embedding_similarity_std": 0.1944673936250927,
+      "num_test_examples": 10
+    },
+    "persona_052": {
+      "embedding_similarity": 0.6322936654090882,
+      "embedding_similarity_std": 0.20026385271894823,
+      "num_test_examples": 10
+    },
+    "persona_053": {
+      "embedding_similarity": 0.7637468099594116,
+      "embedding_similarity_std": 0.19568623115406877,
+      "num_test_examples": 10
+    },
+    "persona_054": {
+      "embedding_similarity": 0.6291934043169022,
+      "embedding_similarity_std": 0.18918119920745458,
+      "num_test_examples": 10
+    },
+    "persona_055": {
+      "embedding_similarity": 0.5021347805857659,
+      "embedding_similarity_std": 0.19173976697833212,
+      "num_test_examples": 10
+    },
+    "persona_056": {
+      "embedding_similarity": 0.534127976000309,
+      "embedding_similarity_std": 0.2809285883564955,
+      "num_test_examples": 10
+    },
+    "persona_057": {
+      "embedding_similarity": 0.48517384603619573,
+      "embedding_similarity_std": 0.3377185398771151,
+      "num_test_examples": 10
+    },
+    "persona_058": {
+      "embedding_similarity": 0.7584359928965568,
+      "embedding_similarity_std": 0.2447207550283316,
+      "num_test_examples": 10
+    },
+    "persona_059": {
+      "embedding_similarity": 0.49484787359833715,
+      "embedding_similarity_std": 0.29166989265121934,
+      "num_test_examples": 10
+    },
+    "persona_060": {
+      "embedding_similarity": 0.6640355534851551,
+      "embedding_similarity_std": 0.26698348090599877,
+      "num_test_examples": 10
+    },
+    "persona_061": {
+      "embedding_similarity": 0.8002906382083893,
+      "embedding_similarity_std": 0.1803978902341012,
+      "num_test_examples": 10
+    },
+    "persona_062": {
+      "embedding_similarity": 0.6518962055444717,
+      "embedding_similarity_std": 0.2151309455613559,
+      "num_test_examples": 10
+    },
+    "persona_063": {
+      "embedding_similarity": 0.7174001812934876,
+      "embedding_similarity_std": 0.1126305177700906,
+      "num_test_examples": 10
+    },
+    "persona_064": {
+      "embedding_similarity": 0.7840868830680847,
+      "embedding_similarity_std": 0.1176171336195388,
+      "num_test_examples": 10
+    },
+    "persona_065": {
+      "embedding_similarity": 0.6646146520972251,
+      "embedding_similarity_std": 0.20476550271504906,
+      "num_test_examples": 10
+    },
+    "persona_066": {
+      "embedding_similarity": 0.7608988791704178,
+      "embedding_similarity_std": 0.18104497424810226,
+      "num_test_examples": 10
+    },
+    "persona_067": {
+      "embedding_similarity": 0.6617550283670426,
+      "embedding_similarity_std": 0.16904806816877466,
+      "num_test_examples": 10
+    },
+    "persona_068": {
+      "embedding_similarity": 0.6412599444389343,
+      "embedding_similarity_std": 0.24891470745519637,
+      "num_test_examples": 10
+    },
+    "persona_069": {
+      "embedding_similarity": 0.7401281774044037,
+      "embedding_similarity_std": 0.30223679650989616,
+      "num_test_examples": 10
+    },
+    "persona_070": {
+      "embedding_similarity": 0.6454661011695861,
+      "embedding_similarity_std": 0.12581716501518533,
+      "num_test_examples": 10
+    },
+    "persona_071": {
+      "embedding_similarity": 0.8048815876245499,
+      "embedding_similarity_std": 0.19510877947828095,
+      "num_test_examples": 10
+    },
+    "persona_072": {
+      "embedding_similarity": 0.5365445122122765,
+      "embedding_similarity_std": 0.16066995576909637,
+      "num_test_examples": 10
+    },
+    "persona_073": {
+      "embedding_similarity": 0.5758712291717529,
+      "embedding_similarity_std": 0.18274542261746496,
+      "num_test_examples": 10
+    },
+    "persona_074": {
+      "embedding_similarity": 0.574498464167118,
+      "embedding_similarity_std": 0.19048826447870953,
+      "num_test_examples": 10
+    },
+    "persona_075": {
+      "embedding_similarity": 0.6930476039648056,
+      "embedding_similarity_std": 0.17392623052095113,
+      "num_test_examples": 10
+    },
+    "persona_076": {
+      "embedding_similarity": 0.6608323216438293,
+      "embedding_similarity_std": 0.2482878845580299,
+      "num_test_examples": 10
+    },
+    "persona_077": {
+      "embedding_similarity": 0.6177057877182961,
+      "embedding_similarity_std": 0.2282242504612321,
+      "num_test_examples": 10
+    },
+    "persona_078": {
+      "embedding_similarity": 0.7993869096040725,
+      "embedding_similarity_std": 0.20312919857190134,
+      "num_test_examples": 10
+    },
+    "persona_079": {
+      "embedding_similarity": 0.7075452402234077,
+      "embedding_similarity_std": 0.22168134481219268,
+      "num_test_examples": 10
+    },
+    "persona_080": {
+      "embedding_similarity": 0.5576351583003998,
+      "embedding_similarity_std": 0.14341832463669216,
+      "num_test_examples": 10
+    },
+    "persona_081": {
+      "embedding_similarity": 0.5512132167816162,
+      "embedding_similarity_std": 0.17243360318692064,
+      "num_test_examples": 10
+    },
+    "persona_082": {
+      "embedding_similarity": 0.37186614274978635,
+      "embedding_similarity_std": 0.23992007695864037,
+      "num_test_examples": 10
+    },
+    "persona_083": {
+      "embedding_similarity": 0.5749062344431877,
+      "embedding_similarity_std": 0.18014496174597847,
+      "num_test_examples": 10
+    },
+    "persona_084": {
+      "embedding_similarity": 0.6807980060577392,
+      "embedding_similarity_std": 0.19063784060117125,
+      "num_test_examples": 10
+    },
+    "persona_085": {
+      "embedding_similarity": 0.6419910341501236,
+      "embedding_similarity_std": 0.1739876788417685,
+      "num_test_examples": 10
+    },
+    "persona_086": {
+      "embedding_similarity": 0.813636702299118,
+      "embedding_similarity_std": 0.1328248352055136,
+      "num_test_examples": 10
+    },
+    "persona_087": {
+      "embedding_similarity": 0.5471564531326294,
+      "embedding_similarity_std": 0.233195037627383,
+      "num_test_examples": 10
+    },
+    "persona_088": {
+      "embedding_similarity": 0.5814392685890197,
+      "embedding_similarity_std": 0.1913135985592309,
+      "num_test_examples": 10
+    },
+    "persona_089": {
+      "embedding_similarity": 0.6280897855758667,
+      "embedding_similarity_std": 0.10851433206647443,
+      "num_test_examples": 10
+    },
+    "persona_090": {
+      "embedding_similarity": 0.7177764296531677,
+      "embedding_similarity_std": 0.17330812172171575,
+      "num_test_examples": 10
+    },
+    "persona_091": {
+      "embedding_similarity": 0.852500069141388,
+      "embedding_similarity_std": 0.12270864413457777,
+      "num_test_examples": 10
+    },
+    "persona_092": {
+      "embedding_similarity": 0.48461308777332307,
+      "embedding_similarity_std": 0.18247703887390032,
+      "num_test_examples": 10
+    },
+    "persona_093": {
+      "embedding_similarity": 0.6087573289871215,
+      "embedding_similarity_std": 0.14494768211302472,
+      "num_test_examples": 10
+    },
+    "persona_094": {
+      "embedding_similarity": 0.7105900175869465,
+      "embedding_similarity_std": 0.21883638702507682,
+      "num_test_examples": 10
+    },
+    "persona_095": {
+      "embedding_similarity": 0.6496679820120335,
+      "embedding_similarity_std": 0.31109059670002437,
+      "num_test_examples": 10
+    },
+    "persona_096": {
+      "embedding_similarity": 0.7551950365304947,
+      "embedding_similarity_std": 0.16645571480377613,
+      "num_test_examples": 10
+    },
+    "persona_097": {
+      "embedding_similarity": 0.6371219165623188,
+      "embedding_similarity_std": 0.29250517394672554,
+      "num_test_examples": 10
+    },
+    "persona_098": {
+      "embedding_similarity": 0.47397040724754336,
+      "embedding_similarity_std": 0.2638858403690729,
+      "num_test_examples": 10
+    },
+    "persona_099": {
+      "embedding_similarity": 0.6786740362644196,
+      "embedding_similarity_std": 0.1835087602055695,
+      "num_test_examples": 10
+    },
+    "persona_100": {
+      "embedding_similarity": 0.7273920804262162,
+      "embedding_similarity_std": 0.25926523183814953,
+      "num_test_examples": 10
+    },
+    "persona_101": {
+      "embedding_similarity": 0.7950676143169403,
+      "embedding_similarity_std": 0.167495244220562,
+      "num_test_examples": 10
+    },
+    "persona_102": {
+      "embedding_similarity": 0.6947763472795486,
+      "embedding_similarity_std": 0.17575964429566196,
+      "num_test_examples": 10
+    },
+    "persona_103": {
+      "embedding_similarity": 0.5724418014287949,
+      "embedding_similarity_std": 0.17694351126486604,
+      "num_test_examples": 10
+    },
+    "persona_104": {
+      "embedding_similarity": 0.6461481958627701,
+      "embedding_similarity_std": 0.22849766885896716,
+      "num_test_examples": 10
+    },
+    "persona_105": {
+      "embedding_similarity": 0.6625671446323395,
+      "embedding_similarity_std": 0.1500346472953497,
+      "num_test_examples": 10
+    },
+    "persona_106": {
+      "embedding_similarity": 0.65161711871624,
+      "embedding_similarity_std": 0.23091924858610602,
+      "num_test_examples": 10
+    },
+    "persona_107": {
+      "embedding_similarity": 0.627271580696106,
+      "embedding_similarity_std": 0.22705375581541715,
+      "num_test_examples": 10
+    },
+    "persona_108": {
+      "embedding_similarity": 0.6055848009884357,
+      "embedding_similarity_std": 0.3378396694474255,
+      "num_test_examples": 10
+    },
+    "persona_109": {
+      "embedding_similarity": 0.674942147731781,
+      "embedding_similarity_std": 0.11754981311972354,
+      "num_test_examples": 10
+    },
+    "persona_110": {
+      "embedding_similarity": 0.6929607152938843,
+      "embedding_similarity_std": 0.2119938489709949,
+      "num_test_examples": 10
+    },
+    "persona_111": {
+      "embedding_similarity": 0.6526232853531837,
+      "embedding_similarity_std": 0.25734133920029684,
+      "num_test_examples": 10
+    },
+    "persona_112": {
+      "embedding_similarity": 0.7047317937016487,
+      "embedding_similarity_std": 0.2771316623035512,
+      "num_test_examples": 10
+    },
+    "persona_113": {
+      "embedding_similarity": 0.779175078868866,
+      "embedding_similarity_std": 0.14835426819123088,
+      "num_test_examples": 10
+    },
+    "persona_114": {
+      "embedding_similarity": 0.7003871470689773,
+      "embedding_similarity_std": 0.2055132030739967,
+      "num_test_examples": 10
+    },
+    "persona_115": {
+      "embedding_similarity": 0.6672530446201563,
+      "embedding_similarity_std": 0.2791036035244649,
+      "num_test_examples": 10
+    },
+    "persona_116": {
+      "embedding_similarity": 0.6619286984205246,
+      "embedding_similarity_std": 0.18487468693307701,
+      "num_test_examples": 10
+    },
+    "persona_117": {
+      "embedding_similarity": 0.6971161663532257,
+      "embedding_similarity_std": 0.2283855171428712,
+      "num_test_examples": 10
+    },
+    "persona_118": {
+      "embedding_similarity": 0.7484827101230621,
+      "embedding_similarity_std": 0.19144857101130192,
+      "num_test_examples": 10
+    },
+    "persona_119": {
+      "embedding_similarity": 0.6447861671447754,
+      "embedding_similarity_std": 0.1172128737156619,
+      "num_test_examples": 10
+    },
+    "persona_120": {
+      "embedding_similarity": 0.48424214124679565,
+      "embedding_similarity_std": 0.15207466243835477,
+      "num_test_examples": 10
+    },
+    "persona_121": {
+      "embedding_similarity": 0.7019284099340439,
+      "embedding_similarity_std": 0.27001250572067875,
+      "num_test_examples": 10
+    },
+    "persona_122": {
+      "embedding_similarity": 0.7249887585639954,
+      "embedding_similarity_std": 0.1746692169521208,
+      "num_test_examples": 10
+    },
+    "persona_123": {
+      "embedding_similarity": 0.667737165093422,
+      "embedding_similarity_std": 0.17015437901723757,
+      "num_test_examples": 10
+    },
+    "persona_124": {
+      "embedding_similarity": 0.6384498432278634,
+      "embedding_similarity_std": 0.19371326434524938,
+      "num_test_examples": 10
+    },
+    "persona_125": {
+      "embedding_similarity": 0.763037109375,
+      "embedding_similarity_std": 0.167816412170867,
+      "num_test_examples": 10
+    },
+    "persona_126": {
+      "embedding_similarity": 0.5717561662197113,
+      "embedding_similarity_std": 0.13106063555756703,
+      "num_test_examples": 10
+    },
+    "persona_127": {
+      "embedding_similarity": 0.7955405056476593,
+      "embedding_similarity_std": 0.14478594570279749,
+      "num_test_examples": 10
+    },
+    "persona_128": {
+      "embedding_similarity": 0.7176994830369949,
+      "embedding_similarity_std": 0.21032165229435185,
+      "num_test_examples": 10
+    },
+    "persona_129": {
+      "embedding_similarity": 0.7308612763881683,
+      "embedding_similarity_std": 0.2095422677834172,
+      "num_test_examples": 10
+    },
+    "persona_130": {
+      "embedding_similarity": 0.7464088022708892,
+      "embedding_similarity_std": 0.14472272789819507,
+      "num_test_examples": 10
+    },
+    "persona_131": {
+      "embedding_similarity": 0.6401779979467392,
+      "embedding_similarity_std": 0.21901399327960502,
+      "num_test_examples": 10
+    },
+    "persona_132": {
+      "embedding_similarity": 0.5866722196340561,
+      "embedding_similarity_std": 0.22685249008759034,
+      "num_test_examples": 10
+    },
+    "persona_133": {
+      "embedding_similarity": 0.6108586132526398,
+      "embedding_similarity_std": 0.2724101332673502,
+      "num_test_examples": 10
+    },
+    "persona_134": {
+      "embedding_similarity": 0.7974461674690246,
+      "embedding_similarity_std": 0.11939256474578801,
+      "num_test_examples": 10
+    },
+    "persona_135": {
+      "embedding_similarity": 0.5629502356052398,
+      "embedding_similarity_std": 0.18830518130209697,
+      "num_test_examples": 10
+    },
+    "persona_136": {
+      "embedding_similarity": 0.6188943803310394,
+      "embedding_similarity_std": 0.22260549684092845,
+      "num_test_examples": 10
+    },
+    "persona_137": {
+      "embedding_similarity": 0.6653840869665146,
+      "embedding_similarity_std": 0.19821734470912789,
+      "num_test_examples": 10
+    },
+    "persona_138": {
+      "embedding_similarity": 0.5737088680267334,
+      "embedding_similarity_std": 0.20457502319014803,
+      "num_test_examples": 10
+    },
+    "persona_139": {
+      "embedding_similarity": 0.6084058091044426,
+      "embedding_similarity_std": 0.23859757615785152,
+      "num_test_examples": 10
+    },
+    "persona_140": {
+      "embedding_similarity": 0.7362287789583206,
+      "embedding_similarity_std": 0.1614339754632352,
+      "num_test_examples": 10
+    },
+    "persona_141": {
+      "embedding_similarity": 0.6703282266855239,
+      "embedding_similarity_std": 0.13884665009453495,
+      "num_test_examples": 10
+    },
+    "persona_142": {
+      "embedding_similarity": 0.5509485885500908,
+      "embedding_similarity_std": 0.20603896865713006,
+      "num_test_examples": 10
+    },
+    "persona_143": {
+      "embedding_similarity": 0.6699156641960144,
+      "embedding_similarity_std": 0.22796615879079432,
+      "num_test_examples": 10
+    },
+    "persona_144": {
+      "embedding_similarity": 0.7924115121364593,
+      "embedding_similarity_std": 0.15432973393785054,
+      "num_test_examples": 10
+    },
+    "persona_145": {
+      "embedding_similarity": 0.6550229966640473,
+      "embedding_similarity_std": 0.18686992199649652,
+      "num_test_examples": 10
+    },
+    "persona_146": {
+      "embedding_similarity": 0.7168681889772415,
+      "embedding_similarity_std": 0.13258766014329784,
+      "num_test_examples": 10
+    },
+    "persona_147": {
+      "embedding_similarity": 0.6026373907923699,
+      "embedding_similarity_std": 0.21230277945889217,
+      "num_test_examples": 10
+    },
+    "persona_148": {
+      "embedding_similarity": 0.5690930269658565,
+      "embedding_similarity_std": 0.3075508193773838,
+      "num_test_examples": 10
+    },
+    "persona_149": {
+      "embedding_similarity": 0.8025593310594559,
+      "embedding_similarity_std": 0.18796313182967625,
+      "num_test_examples": 10
+    },
+    "persona_150": {
+      "embedding_similarity": 0.6576533049345017,
+      "embedding_similarity_std": 0.12983228258210688,
+      "num_test_examples": 10
+    },
+    "persona_151": {
+      "embedding_similarity": 0.643111714720726,
+      "embedding_similarity_std": 0.12240570160985348,
+      "num_test_examples": 10
+    },
+    "persona_152": {
+      "embedding_similarity": 0.6308850854635238,
+      "embedding_similarity_std": 0.32067509692433205,
+      "num_test_examples": 10
+    },
+    "persona_153": {
+      "embedding_similarity": 0.6460882514715195,
+      "embedding_similarity_std": 0.1572762680904681,
+      "num_test_examples": 10
+    },
+    "persona_154": {
+      "embedding_similarity": 0.5999297879636287,
+      "embedding_similarity_std": 0.279830230896162,
+      "num_test_examples": 10
+    },
+    "persona_155": {
+      "embedding_similarity": 0.6528503507375717,
+      "embedding_similarity_std": 0.17802302355296773,
+      "num_test_examples": 10
+    },
+    "persona_156": {
+      "embedding_similarity": 0.7381293475627899,
+      "embedding_similarity_std": 0.13608143347559562,
+      "num_test_examples": 10
+    },
+    "persona_157": {
+      "embedding_similarity": 0.7420343741774559,
+      "embedding_similarity_std": 0.25071232473481014,
+      "num_test_examples": 10
+    },
+    "persona_158": {
+      "embedding_similarity": 0.539076916873455,
+      "embedding_similarity_std": 0.28020973210598715,
+      "num_test_examples": 10
+    },
+    "persona_159": {
+      "embedding_similarity": 0.6413633525371552,
+      "embedding_similarity_std": 0.16290812578398864,
+      "num_test_examples": 10
+    },
+    "persona_160": {
+      "embedding_similarity": 0.6776595547795295,
+      "embedding_similarity_std": 0.21245808840117425,
+      "num_test_examples": 10
+    },
+    "persona_161": {
+      "embedding_similarity": 0.7077873706817627,
+      "embedding_similarity_std": 0.16368782449648409,
+      "num_test_examples": 10
+    },
+    "persona_162": {
+      "embedding_similarity": 0.8338740527629852,
+      "embedding_similarity_std": 0.12249710819877752,
+      "num_test_examples": 10
+    },
+    "persona_163": {
+      "embedding_similarity": 0.6723706007003785,
+      "embedding_similarity_std": 0.09853842709257903,
+      "num_test_examples": 10
+    },
+    "persona_164": {
+      "embedding_similarity": 0.7474132239818573,
+      "embedding_similarity_std": 0.1460923326391047,
+      "num_test_examples": 10
+    },
+    "persona_165": {
+      "embedding_similarity": 0.6515679061412811,
+      "embedding_similarity_std": 0.21918247528864132,
+      "num_test_examples": 10
+    },
+    "persona_166": {
+      "embedding_similarity": 0.669747480750084,
+      "embedding_similarity_std": 0.21978374806255105,
+      "num_test_examples": 10
+    },
+    "persona_167": {
+      "embedding_similarity": 0.47532041370868683,
+      "embedding_similarity_std": 0.10627526265250452,
+      "num_test_examples": 10
+    },
+    "persona_168": {
+      "embedding_similarity": 0.6636413365602494,
+      "embedding_similarity_std": 0.17553565662507678,
+      "num_test_examples": 10
+    },
+    "persona_169": {
+      "embedding_similarity": 0.5847744926810264,
+      "embedding_similarity_std": 0.23161892210027066,
+      "num_test_examples": 10
+    },
+    "persona_170": {
+      "embedding_similarity": 0.7097772032022476,
+      "embedding_similarity_std": 0.18711125996639497,
+      "num_test_examples": 10
+    },
+    "persona_171": {
+      "embedding_similarity": 0.7684029176831245,
+      "embedding_similarity_std": 0.23053586390108485,
+      "num_test_examples": 10
+    },
+    "persona_172": {
+      "embedding_similarity": 0.6570412244647741,
+      "embedding_similarity_std": 0.269184071342246,
+      "num_test_examples": 10
+    },
+    "persona_173": {
+      "embedding_similarity": 0.5419797703623772,
+      "embedding_similarity_std": 0.26502876114493623,
+      "num_test_examples": 10
+    },
+    "persona_174": {
+      "embedding_similarity": 0.6402235016226768,
+      "embedding_similarity_std": 0.2609983471889874,
+      "num_test_examples": 10
+    },
+    "persona_175": {
+      "embedding_similarity": 0.7001941204071045,
+      "embedding_similarity_std": 0.1373864568717758,
+      "num_test_examples": 10
+    },
+    "persona_176": {
+      "embedding_similarity": 0.592600479722023,
+      "embedding_similarity_std": 0.1912043429103962,
+      "num_test_examples": 10
+    },
+    "persona_177": {
+      "embedding_similarity": 0.7366139471530915,
+      "embedding_similarity_std": 0.1269664641387139,
+      "num_test_examples": 10
+    },
+    "persona_178": {
+      "embedding_similarity": 0.6087012238800525,
+      "embedding_similarity_std": 0.22812315388736273,
+      "num_test_examples": 10
+    },
+    "persona_179": {
+      "embedding_similarity": 0.46813896410167216,
+      "embedding_similarity_std": 0.2227688521341815,
+      "num_test_examples": 10
+    },
+    "persona_180": {
+      "embedding_similarity": 0.7131806544959545,
+      "embedding_similarity_std": 0.34281633268374484,
+      "num_test_examples": 10
+    },
+    "persona_181": {
+      "embedding_similarity": 0.691072016954422,
+      "embedding_similarity_std": 0.15997576855469395,
+      "num_test_examples": 10
+    },
+    "persona_182": {
+      "embedding_similarity": 0.6164277344942093,
+      "embedding_similarity_std": 0.23721629082975298,
+      "num_test_examples": 10
+    },
+    "persona_183": {
+      "embedding_similarity": 0.6663944542407989,
+      "embedding_similarity_std": 0.14632621825409528,
+      "num_test_examples": 10
+    },
+    "persona_184": {
+      "embedding_similarity": 0.6995376825332642,
+      "embedding_similarity_std": 0.20448228735416957,
+      "num_test_examples": 10
+    },
+    "persona_185": {
+      "embedding_similarity": 0.7112618774175644,
+      "embedding_similarity_std": 0.2516805314496084,
+      "num_test_examples": 10
+    },
+    "persona_186": {
+      "embedding_similarity": 0.5936193108558655,
+      "embedding_similarity_std": 0.19655692762207091,
+      "num_test_examples": 10
+    },
+    "persona_187": {
+      "embedding_similarity": 0.6954164147377014,
+      "embedding_similarity_std": 0.1296529436070765,
+      "num_test_examples": 10
+    },
+    "persona_188": {
+      "embedding_similarity": 0.686592823266983,
+      "embedding_similarity_std": 0.13583526476637725,
+      "num_test_examples": 10
+    },
+    "persona_189": {
+      "embedding_similarity": 0.7955617368221283,
+      "embedding_similarity_std": 0.08527145042414172,
+      "num_test_examples": 10
+    },
+    "persona_190": {
+      "embedding_similarity": 0.6490399897098541,
+      "embedding_similarity_std": 0.2473795735091032,
+      "num_test_examples": 10
+    },
+    "persona_191": {
+      "embedding_similarity": 0.6392402470111846,
+      "embedding_similarity_std": 0.21860301648340366,
+      "num_test_examples": 10
+    },
+    "persona_192": {
+      "embedding_similarity": 0.7067779898643494,
+      "embedding_similarity_std": 0.08237171288001627,
+      "num_test_examples": 10
+    },
+    "persona_193": {
+      "embedding_similarity": 0.5336660414934158,
+      "embedding_similarity_std": 0.2558925505956687,
+      "num_test_examples": 10
+    },
+    "persona_194": {
+      "embedding_similarity": 0.7514275163412094,
+      "embedding_similarity_std": 0.14431354085478867,
+      "num_test_examples": 10
+    },
+    "persona_195": {
+      "embedding_similarity": 0.570933498814702,
+      "embedding_similarity_std": 0.2443279727577544,
+      "num_test_examples": 10
+    },
+    "persona_196": {
+      "embedding_similarity": 0.7255614340305329,
+      "embedding_similarity_std": 0.19402495463054634,
+      "num_test_examples": 10
+    },
+    "persona_197": {
+      "embedding_similarity": 0.8018611550331116,
+      "embedding_similarity_std": 0.10091195304877439,
+      "num_test_examples": 10
+    },
+    "persona_198": {
+      "embedding_similarity": 0.7572068899869919,
+      "embedding_similarity_std": 0.1785175785685292,
+      "num_test_examples": 10
+    },
+    "persona_199": {
+      "embedding_similarity": 0.8804011553525924,
+      "embedding_similarity_std": 0.19001654820913194,
+      "num_test_examples": 10
+    }
+  }
+}

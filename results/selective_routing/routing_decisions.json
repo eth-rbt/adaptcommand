@@ -1,0 +1,1813 @@
+{
+  "routing_decisions": [
+    {
+      "persona_id": "persona_000",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6917818784713745,
+      "hybrid_score": 0.6862576603889465,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_001",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7236465215682983,
+      "hybrid_score": 0.75699782371521,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_002",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6283711194992065,
+      "hybrid_score": 0.778388261795044,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_003",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.695652425289154,
+      "hybrid_score": 0.7434147596359253,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_004",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7619892358779907,
+      "hybrid_score": 0.8871843218803406,
+      "best_score": 0.8871843218803406,
+      "improvement_over_unified": 0.06580221652984619
+    },
+    {
+      "persona_id": "persona_005",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7075568437576294,
+      "hybrid_score": 0.8821598291397095,
+      "best_score": 0.8821598291397095,
+      "improvement_over_unified": 0.06077772378921509
+    },
+    {
+      "persona_id": "persona_006",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6812446713447571,
+      "hybrid_score": 0.7734212875366211,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_007",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6504374146461487,
+      "hybrid_score": 0.7116552591323853,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_008",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8206302523612976,
+      "hybrid_score": 0.8487693667411804,
+      "best_score": 0.8487693667411804,
+      "improvement_over_unified": 0.027387261390686035
+    },
+    {
+      "persona_id": "persona_009",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8442180752754211,
+      "hybrid_score": 0.8535670042037964,
+      "best_score": 0.8535670042037964,
+      "improvement_over_unified": 0.032184898853302
+    },
+    {
+      "persona_id": "persona_010",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6427966952323914,
+      "hybrid_score": 0.7248246073722839,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_011",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.48483458161354065,
+      "hybrid_score": 0.6382430791854858,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_012",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7325109243392944,
+      "hybrid_score": 0.7401055693626404,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_013",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6506654024124146,
+      "hybrid_score": 0.7103077173233032,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_014",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6546619534492493,
+      "hybrid_score": 0.7725304365158081,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_015",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7556825280189514,
+      "hybrid_score": 0.7307130098342896,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_016",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7288068532943726,
+      "hybrid_score": 0.72545325756073,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_017",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6628387570381165,
+      "hybrid_score": 0.7979260683059692,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_018",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6278221011161804,
+      "hybrid_score": 0.7588417530059814,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_019",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7016056776046753,
+      "hybrid_score": 0.7790915369987488,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_020",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7785377502441406,
+      "hybrid_score": 0.8505390882492065,
+      "best_score": 0.8505390882492065,
+      "improvement_over_unified": 0.029156982898712158
+    },
+    {
+      "persona_id": "persona_021",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6699166893959045,
+      "hybrid_score": 0.7667941451072693,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_022",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6755911111831665,
+      "hybrid_score": 0.6780217885971069,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_023",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6425421833992004,
+      "hybrid_score": 0.8099488019943237,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_024",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6773837804794312,
+      "hybrid_score": 0.7235580682754517,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_025",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.722737729549408,
+      "hybrid_score": 0.7774045467376709,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_026",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8126241564750671,
+      "hybrid_score": 0.9112715721130371,
+      "best_score": 0.9112715721130371,
+      "improvement_over_unified": 0.08988946676254272
+    },
+    {
+      "persona_id": "persona_027",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5779632329940796,
+      "hybrid_score": 0.6821125149726868,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_028",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6838606595993042,
+      "hybrid_score": 0.7426468729972839,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_029",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6930774450302124,
+      "hybrid_score": 0.8830936551094055,
+      "best_score": 0.8830936551094055,
+      "improvement_over_unified": 0.06171154975891113
+    },
+    {
+      "persona_id": "persona_030",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5867738723754883,
+      "hybrid_score": 0.6995433568954468,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_031",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6955212354660034,
+      "hybrid_score": 0.7842525243759155,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_032",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.607305109500885,
+      "hybrid_score": 0.5979348421096802,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_033",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7153412103652954,
+      "hybrid_score": 0.7240028381347656,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_034",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7174197435379028,
+      "hybrid_score": 0.7951383590698242,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_035",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7360362410545349,
+      "hybrid_score": 0.7325215935707092,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_036",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6427921652793884,
+      "hybrid_score": 0.7152630090713501,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_037",
+      "best_model": "personalized",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8261392712593079,
+      "hybrid_score": 0.8254861831665039,
+      "best_score": 0.8261392712593079,
+      "improvement_over_unified": 0.0047571659088134766
+    },
+    {
+      "persona_id": "persona_038",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6708706617355347,
+      "hybrid_score": 0.6838034391403198,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_039",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.674677848815918,
+      "hybrid_score": 0.8149223327636719,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_040",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7927833795547485,
+      "hybrid_score": 0.875799834728241,
+      "best_score": 0.875799834728241,
+      "improvement_over_unified": 0.05441772937774658
+    },
+    {
+      "persona_id": "persona_041",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.752257227897644,
+      "hybrid_score": 0.8393813967704773,
+      "best_score": 0.8393813967704773,
+      "improvement_over_unified": 0.01799929141998291
+    },
+    {
+      "persona_id": "persona_042",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6659926176071167,
+      "hybrid_score": 0.6515474319458008,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_043",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.681068480014801,
+      "hybrid_score": 0.7063917517662048,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_044",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.645990252494812,
+      "hybrid_score": 0.6828396320343018,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_045",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.658747673034668,
+      "hybrid_score": 0.692360520362854,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_046",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5750528573989868,
+      "hybrid_score": 0.8449220657348633,
+      "best_score": 0.8449220657348633,
+      "improvement_over_unified": 0.023539960384368896
+    },
+    {
+      "persona_id": "persona_047",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5691090822219849,
+      "hybrid_score": 0.6288242340087891,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_048",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6791582703590393,
+      "hybrid_score": 0.7290185689926147,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_049",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6301690340042114,
+      "hybrid_score": 0.7610507011413574,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_050",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5319890379905701,
+      "hybrid_score": 0.6517995595932007,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_051",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5890169143676758,
+      "hybrid_score": 0.7214648723602295,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_052",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6220287084579468,
+      "hybrid_score": 0.8261103630065918,
+      "best_score": 0.8261103630065918,
+      "improvement_over_unified": 0.004728257656097412
+    },
+    {
+      "persona_id": "persona_053",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8140360713005066,
+      "hybrid_score": 0.8644880056381226,
+      "best_score": 0.8644880056381226,
+      "improvement_over_unified": 0.043105900287628174
+    },
+    {
+      "persona_id": "persona_054",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6009762287139893,
+      "hybrid_score": 0.7639592289924622,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_055",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5484519004821777,
+      "hybrid_score": 0.6498135328292847,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_056",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5562993884086609,
+      "hybrid_score": 0.5776894092559814,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_057",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6296185851097107,
+      "hybrid_score": 0.8314821124076843,
+      "best_score": 0.8314821124076843,
+      "improvement_over_unified": 0.010100007057189941
+    },
+    {
+      "persona_id": "persona_058",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7546857595443726,
+      "hybrid_score": 0.7762410044670105,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_059",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5341050624847412,
+      "hybrid_score": 0.6760322451591492,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_060",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7428673505783081,
+      "hybrid_score": 0.8495258092880249,
+      "best_score": 0.8495258092880249,
+      "improvement_over_unified": 0.028143703937530518
+    },
+    {
+      "persona_id": "persona_061",
+      "best_model": "personalized",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8442896008491516,
+      "hybrid_score": 0.7877168655395508,
+      "best_score": 0.8442896008491516,
+      "improvement_over_unified": 0.022907495498657227
+    },
+    {
+      "persona_id": "persona_062",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6371454000473022,
+      "hybrid_score": 0.662298321723938,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_063",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7016360759735107,
+      "hybrid_score": 0.7409213781356812,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_064",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6218600273132324,
+      "hybrid_score": 0.8328768014907837,
+      "best_score": 0.8328768014907837,
+      "improvement_over_unified": 0.011494696140289307
+    },
+    {
+      "persona_id": "persona_065",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6153705716133118,
+      "hybrid_score": 0.7227948904037476,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_066",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7528690099716187,
+      "hybrid_score": 0.7518302202224731,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_067",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6881723403930664,
+      "hybrid_score": 0.6971980929374695,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_068",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7466651797294617,
+      "hybrid_score": 0.8422290086746216,
+      "best_score": 0.8422290086746216,
+      "improvement_over_unified": 0.020846903324127197
+    },
+    {
+      "persona_id": "persona_069",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7312967777252197,
+      "hybrid_score": 0.832175612449646,
+      "best_score": 0.832175612449646,
+      "improvement_over_unified": 0.010793507099151611
+    },
+    {
+      "persona_id": "persona_070",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7151567935943604,
+      "hybrid_score": 0.7149310111999512,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_071",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7017962336540222,
+      "hybrid_score": 0.7334967851638794,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_072",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5371208786964417,
+      "hybrid_score": 0.6119366884231567,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_073",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7761120200157166,
+      "hybrid_score": 0.8272393941879272,
+      "best_score": 0.8272393941879272,
+      "improvement_over_unified": 0.005857288837432861
+    },
+    {
+      "persona_id": "persona_074",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7003158330917358,
+      "hybrid_score": 0.8218368291854858,
+      "best_score": 0.8218368291854858,
+      "improvement_over_unified": 0.0004547238349914551
+    },
+    {
+      "persona_id": "persona_075",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7195008993148804,
+      "hybrid_score": 0.7673319578170776,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_076",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.607201337814331,
+      "hybrid_score": 0.7253075838088989,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_077",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5845031142234802,
+      "hybrid_score": 0.7112451791763306,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_078",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8037154078483582,
+      "hybrid_score": 0.8834244012832642,
+      "best_score": 0.8834244012832642,
+      "improvement_over_unified": 0.062042295932769775
+    },
+    {
+      "persona_id": "persona_079",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7468646764755249,
+      "hybrid_score": 0.7677696943283081,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_080",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6544212698936462,
+      "hybrid_score": 0.7985230684280396,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_081",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.625138521194458,
+      "hybrid_score": 0.7606580853462219,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_082",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.563561737537384,
+      "hybrid_score": 0.7859944701194763,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_083",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.620906412601471,
+      "hybrid_score": 0.7231465578079224,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_084",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6707402467727661,
+      "hybrid_score": 0.7365919947624207,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_085",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5635803937911987,
+      "hybrid_score": 0.6962001919746399,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_086",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.834861159324646,
+      "hybrid_score": 0.839645504951477,
+      "best_score": 0.839645504951477,
+      "improvement_over_unified": 0.018263399600982666
+    },
+    {
+      "persona_id": "persona_087",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6721733808517456,
+      "hybrid_score": 0.6656297445297241,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_088",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6457937359809875,
+      "hybrid_score": 0.7099698185920715,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_089",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.588661253452301,
+      "hybrid_score": 0.7135694026947021,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_090",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6945933103561401,
+      "hybrid_score": 0.7588475346565247,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_091",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8702219724655151,
+      "hybrid_score": 0.9316021800041199,
+      "best_score": 0.9316021800041199,
+      "improvement_over_unified": 0.11022007465362549
+    },
+    {
+      "persona_id": "persona_092",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7072578072547913,
+      "hybrid_score": 0.70569908618927,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_093",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6953834295272827,
+      "hybrid_score": 0.7799361944198608,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_094",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7077555060386658,
+      "hybrid_score": 0.7916222214698792,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_095",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8111362457275391,
+      "hybrid_score": 0.8168746829032898,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_096",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7658419609069824,
+      "hybrid_score": 0.8531519770622253,
+      "best_score": 0.8531519770622253,
+      "improvement_over_unified": 0.03176987171173096
+    },
+    {
+      "persona_id": "persona_097",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6494124531745911,
+      "hybrid_score": 0.7619025111198425,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_098",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5427531003952026,
+      "hybrid_score": 0.7953185439109802,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_099",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6658867597579956,
+      "hybrid_score": 0.7356180548667908,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_100",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5898633599281311,
+      "hybrid_score": 0.7284160852432251,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_101",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.726871132850647,
+      "hybrid_score": 0.7721039056777954,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_102",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6893995404243469,
+      "hybrid_score": 0.8518444299697876,
+      "best_score": 0.8518444299697876,
+      "improvement_over_unified": 0.030462324619293213
+    },
+    {
+      "persona_id": "persona_103",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5988154411315918,
+      "hybrid_score": 0.6657137870788574,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_104",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5324712991714478,
+      "hybrid_score": 0.7982015609741211,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_105",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7211831212043762,
+      "hybrid_score": 0.7159983515739441,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_106",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6288406252861023,
+      "hybrid_score": 0.7521028518676758,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_107",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6855343580245972,
+      "hybrid_score": 0.6859233975410461,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_108",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5502007603645325,
+      "hybrid_score": 0.7993983030319214,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_109",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7129206657409668,
+      "hybrid_score": 0.6908047199249268,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_110",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6031872630119324,
+      "hybrid_score": 0.7530941963195801,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_111",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6877496838569641,
+      "hybrid_score": 0.7903117537498474,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_112",
+      "best_model": "personalized",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8529596328735352,
+      "hybrid_score": 0.8509014844894409,
+      "best_score": 0.8529596328735352,
+      "improvement_over_unified": 0.03157752752304077
+    },
+    {
+      "persona_id": "persona_113",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7424627542495728,
+      "hybrid_score": 0.8358885049819946,
+      "best_score": 0.8358885049819946,
+      "improvement_over_unified": 0.014506399631500244
+    },
+    {
+      "persona_id": "persona_114",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7427000403404236,
+      "hybrid_score": 0.73354172706604,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_115",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.4890587329864502,
+      "hybrid_score": 0.8477351069450378,
+      "best_score": 0.8477351069450378,
+      "improvement_over_unified": 0.026353001594543457
+    },
+    {
+      "persona_id": "persona_116",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6105039715766907,
+      "hybrid_score": 0.7581757307052612,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_117",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.586595356464386,
+      "hybrid_score": 0.7692831158638,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_118",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6764237284660339,
+      "hybrid_score": 0.7322819828987122,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_119",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7099948525428772,
+      "hybrid_score": 0.744414210319519,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_120",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.571087658405304,
+      "hybrid_score": 0.6662584543228149,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_121",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7877461910247803,
+      "hybrid_score": 0.7583979368209839,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_122",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.741407036781311,
+      "hybrid_score": 0.7074357271194458,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_123",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.690642774105072,
+      "hybrid_score": 0.7408653497695923,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_124",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6188408732414246,
+      "hybrid_score": 0.7784727811813354,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_125",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7040780782699585,
+      "hybrid_score": 0.7323427200317383,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_126",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6866297721862793,
+      "hybrid_score": 0.6694744825363159,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_127",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7558502554893494,
+      "hybrid_score": 0.7746094465255737,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_128",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7548790574073792,
+      "hybrid_score": 0.7684519290924072,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_129",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6718980073928833,
+      "hybrid_score": 0.8312362432479858,
+      "best_score": 0.8312362432479858,
+      "improvement_over_unified": 0.009854137897491455
+    },
+    {
+      "persona_id": "persona_130",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7172350287437439,
+      "hybrid_score": 0.7886103987693787,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_131",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6233302354812622,
+      "hybrid_score": 0.7210520505905151,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_132",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6784439086914062,
+      "hybrid_score": 0.7417619228363037,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_133",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6886676549911499,
+      "hybrid_score": 0.6956726908683777,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_134",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6799864768981934,
+      "hybrid_score": 0.8218631744384766,
+      "best_score": 0.8218631744384766,
+      "improvement_over_unified": 0.00048106908798217773
+    },
+    {
+      "persona_id": "persona_135",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5906187891960144,
+      "hybrid_score": 0.6952182054519653,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_136",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5770732164382935,
+      "hybrid_score": 0.6755804419517517,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_137",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6994245052337646,
+      "hybrid_score": 0.868655800819397,
+      "best_score": 0.868655800819397,
+      "improvement_over_unified": 0.04727369546890259
+    },
+    {
+      "persona_id": "persona_138",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6334203481674194,
+      "hybrid_score": 0.6702832579612732,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_139",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5958417654037476,
+      "hybrid_score": 0.7463167905807495,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_140",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6641457080841064,
+      "hybrid_score": 0.7981988191604614,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_141",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6757325530052185,
+      "hybrid_score": 0.7748311758041382,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_142",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6575106382369995,
+      "hybrid_score": 0.7159972190856934,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_143",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7401647567749023,
+      "hybrid_score": 0.7336076498031616,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_144",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7933293581008911,
+      "hybrid_score": 0.8970751762390137,
+      "best_score": 0.8970751762390137,
+      "improvement_over_unified": 0.07569307088851929
+    },
+    {
+      "persona_id": "persona_145",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.692188024520874,
+      "hybrid_score": 0.7785947322845459,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_146",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6331570744514465,
+      "hybrid_score": 0.7338312864303589,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_147",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7150207757949829,
+      "hybrid_score": 0.6969901323318481,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_148",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7255843877792358,
+      "hybrid_score": 0.8340951204299927,
+      "best_score": 0.8340951204299927,
+      "improvement_over_unified": 0.012713015079498291
+    },
+    {
+      "persona_id": "persona_149",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.8388891220092773,
+      "hybrid_score": 0.8855603933334351,
+      "best_score": 0.8855603933334351,
+      "improvement_over_unified": 0.06417828798294067
+    },
+    {
+      "persona_id": "persona_150",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6209779977798462,
+      "hybrid_score": 0.6015210151672363,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_151",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6727622747421265,
+      "hybrid_score": 0.700414776802063,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_152",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6600339412689209,
+      "hybrid_score": 0.7791266441345215,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_153",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.610935628414154,
+      "hybrid_score": 0.7546206712722778,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_154",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6889063119888306,
+      "hybrid_score": 0.7315395474433899,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_155",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.792618453502655,
+      "hybrid_score": 0.7812638878822327,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_156",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6516867280006409,
+      "hybrid_score": 0.7676257491111755,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_157",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7405220866203308,
+      "hybrid_score": 0.8561342358589172,
+      "best_score": 0.8561342358589172,
+      "improvement_over_unified": 0.03475213050842285
+    },
+    {
+      "persona_id": "persona_158",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7147697806358337,
+      "hybrid_score": 0.7683923840522766,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_159",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7146680355072021,
+      "hybrid_score": 0.7740532159805298,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_160",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.794476330280304,
+      "hybrid_score": 0.7848628759384155,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_161",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6363105177879333,
+      "hybrid_score": 0.7719141244888306,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_162",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7789950966835022,
+      "hybrid_score": 0.8170843124389648,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_163",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7372708320617676,
+      "hybrid_score": 0.8025205731391907,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_164",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7716256380081177,
+      "hybrid_score": 0.9042081832885742,
+      "best_score": 0.9042081832885742,
+      "improvement_over_unified": 0.08282607793807983
+    },
+    {
+      "persona_id": "persona_165",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6352104544639587,
+      "hybrid_score": 0.691072940826416,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_166",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6824515461921692,
+      "hybrid_score": 0.715981662273407,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_167",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6137225031852722,
+      "hybrid_score": 0.622715413570404,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_168",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6466996073722839,
+      "hybrid_score": 0.7370573282241821,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_169",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7561192512512207,
+      "hybrid_score": 0.8730699419975281,
+      "best_score": 0.8730699419975281,
+      "improvement_over_unified": 0.05168783664703369
+    },
+    {
+      "persona_id": "persona_170",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5449769496917725,
+      "hybrid_score": 0.6653496623039246,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_171",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7075618505477905,
+      "hybrid_score": 0.8022586703300476,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_172",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5852125287055969,
+      "hybrid_score": 0.7559239864349365,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_173",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6441177725791931,
+      "hybrid_score": 0.7046938538551331,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_174",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6659427881240845,
+      "hybrid_score": 0.748501181602478,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_175",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7095702290534973,
+      "hybrid_score": 0.5869722962379456,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_176",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.719525933265686,
+      "hybrid_score": 0.7443729639053345,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_177",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7542411088943481,
+      "hybrid_score": 0.8481450080871582,
+      "best_score": 0.8481450080871582,
+      "improvement_over_unified": 0.02676290273666382
+    },
+    {
+      "persona_id": "persona_178",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6379878520965576,
+      "hybrid_score": 0.7775481343269348,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_179",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6109496355056763,
+      "hybrid_score": 0.6985509991645813,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_180",
+      "best_model": "personalized",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.9413262605667114,
+      "hybrid_score": 0.756415069103241,
+      "best_score": 0.9413262605667114,
+      "improvement_over_unified": 0.11994415521621704
+    },
+    {
+      "persona_id": "persona_181",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6729823350906372,
+      "hybrid_score": 0.7116636037826538,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_182",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.715538740158081,
+      "hybrid_score": 0.8655377626419067,
+      "best_score": 0.8655377626419067,
+      "improvement_over_unified": 0.044155657291412354
+    },
+    {
+      "persona_id": "persona_183",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6216436624526978,
+      "hybrid_score": 0.642536997795105,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_184",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7072941660881042,
+      "hybrid_score": 0.6642065644264221,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_185",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7397159337997437,
+      "hybrid_score": 0.8043878674507141,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_186",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6654391884803772,
+      "hybrid_score": 0.6928898096084595,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_187",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.5705219507217407,
+      "hybrid_score": 0.8689650297164917,
+      "best_score": 0.8689650297164917,
+      "improvement_over_unified": 0.047582924365997314
+    },
+    {
+      "persona_id": "persona_188",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.657281756401062,
+      "hybrid_score": 0.7460933923721313,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_189",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7541149258613586,
+      "hybrid_score": 0.7686211466789246,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_190",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7158622741699219,
+      "hybrid_score": 0.8297213315963745,
+      "best_score": 0.8297213315963745,
+      "improvement_over_unified": 0.008339226245880127
+    },
+    {
+      "persona_id": "persona_191",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6978119611740112,
+      "hybrid_score": 0.7576144933700562,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_192",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7406944036483765,
+      "hybrid_score": 0.7597058415412903,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_193",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.6179757714271545,
+      "hybrid_score": 0.7319287657737732,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_194",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7128050923347473,
+      "hybrid_score": 0.7188454866409302,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_195",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.650398850440979,
+      "hybrid_score": 0.78948974609375,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_196",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7732798457145691,
+      "hybrid_score": 0.7176269888877869,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_197",
+      "best_model": "unified",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7193170189857483,
+      "hybrid_score": 0.7822343111038208,
+      "best_score": 0.8213821053504944,
+      "improvement_over_unified": 0.0
+    },
+    {
+      "persona_id": "persona_198",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.7805302739143372,
+      "hybrid_score": 0.8702718019485474,
+      "best_score": 0.8702718019485474,
+      "improvement_over_unified": 0.04888969659805298
+    },
+    {
+      "persona_id": "persona_199",
+      "best_model": "hybrid",
+      "unified_score": 0.8213821053504944,
+      "personalized_score": 0.857591450214386,
+      "hybrid_score": 0.8938432931900024,
+      "best_score": 0.8938432931900024,
+      "improvement_over_unified": 0.07246118783950806
+    }
+  ],
+  "summary": {
+    "unified_count": 155,
+    "personalized_count": 4,
+    "hybrid_count": 41,
+    "avg_selective_score": 0.8298763388395309,
+    "unified_score": 0.8213821053504944,
+    "improvement": 0.008494233489036551,
+    "improvement_pct": 1.0341390972246651
+  }
+}
